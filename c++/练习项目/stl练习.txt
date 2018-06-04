@@ -1,0 +1,212 @@
+#include <iostream>
+#include <stdlib.h>
+#include <time.h>
+#include <string>
+//使用STL中的list 
+#include <list>
+#include <numeric>
+#include <algorithm> 
+//使用STL中的map 
+#include <map>
+#include <set>
+//相当于一个动态数组,当无法知道数组的大小时,可以用其节约空间 
+#include<vector>
+
+/**
+* 本例子也就是一些常规性的用法，比较高深一点的只能参考其他的文档 
+*/
+
+
+using namespace std;
+
+void list_test();
+void rand_test();
+void map_test();
+void set_test();
+void vector_test();
+
+//创建一个list容器的实例LISTINT（这里用这样的做法做一些 其实map什么的都可以先这样） 
+typedef list<int> LISTINT;
+
+int main(int argc, char *argv[])
+{
+rand_test();
+map_test();
+list_test();
+set_test();
+vector_test();
+system("pause");
+return 0;
+}
+
+//练习一下随机数 
+void rand_test(){
+srand((int)time(0));//必须用这个来散播随机数种子 ，不然随机数每次调试的时候都是和上一次一样 
+int x = rand()%11; /*产生1~10之间的随机整数*/
+int y = rand()%51 - 25; /*产生-25 ~ 25之间的随机整数*/
+int a=1;
+int b=10;
+double z = ((double)rand()/RAND_MAX)*(b-a) + a;/*产生区间[a,b]上的随机数*/
+}
+
+//练习map 
+void map_test(){
+cout<<endl;
+using std::map; 
+map <string,string>m1;
+m1.insert(map<string, string> :: value_type("2", "Two"));
+m1.insert(map<string, string> :: value_type("3", "three"));
+m1.insert(map<string, string> :: value_type("4", "four"));
+string s=m1["2"];
+cout<<(s)<<"!\n"; 
+// 找key是不是存在,找到就输出 
+map<string, string>::iterator iter; 
+iter=m1.find("2"); 
+if(iter != m1.end()){
+cout<<"Find, the value is:"<<iter->second<<endl;
+}
+else{
+cout<<"Do not Find"<<endl;
+}
+//删除 ,然后就迭代不到了 
+m1.erase("2"); 
+iter=m1.find("2"); 
+if(iter != m1.end()){
+cout<<"Find, the value is:"<<iter->second<<endl;
+}
+else{
+cout<<"Do not Find"<<endl;
+}
+
+//my_Map.size() 返回元素数目 
+//my_Map.empty() 判断是否为空 
+//my_Map.clear() 清空所有元素 
+}
+
+//练习list 
+void list_test(){
+cout<<"~~~~~~~~~~list~~~~~~~~~~~~~~~~"<<endl;
+list<string>strList;
+string two="two";
+//1---加入队尾，我觉得类似java的add 
+strList.push_back(two);
+//2---加入到队首 
+strList.push_front("zero");
+//3---插入元素 (在第一个位置，插入1个元素) 
+strList.insert((++strList.begin()),1,"one");
+//4---队尾加入2个元素，为了演示下面的在第三个位置插入一个three 
+strList.push_back("four");
+strList.push_back("five");
+//在第三个位置 插入一个元素 
+int n=3;
+list<string>::iterator it = strList.begin();
+for(int i = 0; i < n && it!= strList.end(); ++i)
+++it;
+strList.insert(it,1,"three"); 
+//5---从前往后遍历
+for (list<string>::iterator j=strList.begin(); j != strList.end(); ++j){
+cout << string(*j) << " ";
+}
+cout<<endl;
+//6---从后往前遍历 
+for (list<string>::iterator k=--strList.end(); k != --strList.begin(); --k){
+cout << string(*k) << " ";
+}
+//7---删除一个元素(这里删除three)
+list<string>::iterator l;
+for (l=strList.begin(); l != strList.end(); ++l){
+if(string(*l)=="three"){
+break;
+} 
+}
+strList.erase(l);
+cout<<endl;
+//查看删除元素后的数据 
+for (list<string>::iterator j=strList.begin(); j != strList.end(); ++j){
+cout << string(*j) << " ";
+}
+//常规用法一般就这里结束 ，其他高级的就只能参考api了 
+
+cout << endl; 
+}
+
+//这个是给下面set用来泛型的结构体 
+typedef struct {
+int a,b;
+char s;
+}newtype;
+
+//这个是给下面set的排序方法 
+struct compare //there is no ().
+{
+bool operator()(const newtype &a, const newtype &b) const{
+return a.s<b.s;
+}
+};
+
+
+//集合的练习 
+void set_test(){
+cout<<endl<<"SET TEST!\n";
+//1--这个set反省了个newtype结构，然后实现了比较方法 
+set<newtype,compare>s;
+newtype a,b,c,d;
+a.a=1; a.s='b';
+b.a=2; b.s='c';
+c.a=3; c.s='d';
+d.a=4; d.s='a';
+
+//插入数据 
+s.insert(a);
+s.insert(b);
+s.insert(c);
+s.insert(d);
+
+//这里会按照比较好的顺序进行输出 
+set<newtype,compare>::iterator it;
+for(it=s.begin(); it!=s.end();it++)
+cout<<(*it).a<<" ";
+
+cout<<endl;
+
+for(it=s.begin(); it!=s.end();it++)
+cout<<(*it).s<<" ";
+}
+
+//这个是给下面那个vector写的排序方法 
+bool comp(const string &a,const string &b){
+int _a=(int)a[0];
+int _b=(int)b[0];
+return _a>_b;
+}
+
+void vector_test(){
+cout<<endl<<"VECTOR TEST!\n";
+//获得一个vector对象 
+vector<string>v;
+//往数组尾插入数据 
+v.push_back("begin");
+v.push_back("a");
+//迭代一下 
+vector<string>::iterator it;
+for(it=v.begin();it!=v.end();it++){
+cout<<(*it)<<" ";
+}
+//在指定位置插入数据 
+it=v.begin();
+v.insert(it+2,"b");
+
+it=v.begin();
+v.insert(it+3,"c");
+//擦完继续迭代 
+cout<<"\n ~~AFTER INSERT~~~~\n";
+for(it=v.begin();it!=v.end();it++){
+cout<<(*it)<<" ";
+}
+//排序 
+cout<<"\n ~~AFTER sort~~~~\n";
+sort(v.begin(),v.end(),comp); 
+for(it=v.begin();it!=v.end();it++){
+cout<<(*it)<<" ";
+}
+}
