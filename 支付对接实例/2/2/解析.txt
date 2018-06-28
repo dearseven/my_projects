@@ -1,7 +1,0 @@
-这个代码基本上和外面的是一样的
-但是是改进了的
-1 对WXPayEntryActivity增加的透明主题
-2 增加了支付宝的回调到PaymentActivity的接口，在其Presenter层使用了
-3 修改了微信回调的PaymentActivity的方式，也不会产生多个PaymentActivity了要结束了
-PaymentActivity的启动类型为 SingleTask
-PaymentActivity重写了onNewIntent方法
