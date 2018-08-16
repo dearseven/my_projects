@@ -2,6 +2,9 @@ npm install --save-dev webpack webpack-cli webpack-dev-server babel-core babel-l
 
 npm install --save-dev vue-loader vue-template-compiler
 
+npm install --save-dev clean-webpack-plugin 
+
+
 
 因为在package.json 配置了start是运行webpack所以 只要npm start就可以了
 但是不知道为什么npm server不行

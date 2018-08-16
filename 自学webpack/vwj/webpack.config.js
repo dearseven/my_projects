@@ -1,4 +1,5 @@
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
 	entry: {
@@ -8,10 +9,10 @@ module.exports = {
 	output: {
 		filename: '[name].js',
 		path: __dirname + '/build',
-		//publicPath: __dirname + '/build/out' //指定静态资源 (图片等) 的发布地址
+		publicPath: 'build/' //指定静态资源 (图片等) 的发布地址，比如图片就在build/imgs/下，因为下面的图片打包设置了./imgs这个目录
 	},
 	plugins: [
-		new VueLoaderPlugin()
+		new VueLoaderPlugin(),
 		//webpack插件部分
 		//		分割css插件
 		//		new ExtractTextWebpackPlugin({
@@ -35,7 +36,7 @@ module.exports = {
 		//			chunks: ['w']
 		//		}),
 		//		//	每次清空dist目录
-		//		new CleanWebpackPlugin(['dist'])
+		new CleanWebpackPlugin(['build'])
 	],
 	devtool: 'cheap-module-source-map', //'cheap-module-eval-source-map','eval-source-map',
 	devServer: {
@@ -76,10 +77,9 @@ module.exports = {
 					loader: "url-loader",
 					//loader: 'url-loader?limit=8192&name=[name].[ext]?[hash]',
 					options: {
-						limit: 50, //小于8192字节的图片以 base64 的方式引用
-						//publicPath: '../../', //你实际项目的引用地址前缀
-						outputPath:'./imgs', // 指定打包后的图片位置
-						name:'[name]_[hash:base64:7].[ext]'
+						limit: 50000, //小于n字节的图片以 base64 的方式引用,1024字节（byte）=1kb,这里是差不多50kb，因为毕竟是1024进制
+						outputPath: './imgs', // 指定打包后的图片位置
+						name: '[name]-[hash:base64:14].[ext]'
 					}
 				}]
 			},
