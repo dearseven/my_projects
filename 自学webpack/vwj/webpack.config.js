@@ -1,5 +1,6 @@
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 	entry: {
@@ -7,9 +8,11 @@ module.exports = {
 		w: __dirname + "/app/welcome/welcome.js"
 	}, //已多次提及的唯一入口文件
 	output: {
-		filename: '[name].js',
+		filename: 'js/[name].js',
 		path: __dirname + '/build',
-		publicPath: 'build/' //指定静态资源 (图片等) 的发布地址，比如图片就在build/imgs/下，因为下面的图片打包设置了./imgs这个目录
+		publicPath: 'build/', //指定静态资源 (图片等) 的发布地址，比如图片就在build/imgs/下，因为下面的图片打包设置了./imgs这个目录
+		chunkFilename: '../js/[name].js',
+
 	},
 	plugins: [
 		new VueLoaderPlugin(),
@@ -36,7 +39,29 @@ module.exports = {
 		//			chunks: ['w']
 		//		}),
 		//		//	每次清空dist目录
-		new CleanWebpackPlugin(['build'])
+		new CleanWebpackPlugin(['build']),
+		new HtmlWebpackPlugin({
+			chunks:['w'],
+			//chunkFileName: '../js/w.js',
+			filename: '../w.html', //每次调用指定生成的html名称
+			minify: {
+				collapseWhitespace: false //折叠空白区域 也就是压缩代码,先不折叠，方便看
+			},
+			hash: true,
+			title: 'I am welcome',
+			template: './htmlsrc/welcome.html' //模板地址
+		}),
+		new HtmlWebpackPlugin({
+			chunks:['m'],
+			//chunkFileName: '../js/m.js',
+			filename: '../m.html', //每次调用指定生成的html名称
+			minify: {
+				collapseWhitespace: false //折叠空白区域 也就是压缩代码,先不折叠，方便看
+			},
+			hash: true,
+			title: 'I am main',
+			template: './htmlsrc/main.html' //模板地址
+		})
 	],
 	devtool: 'cheap-module-source-map', //'cheap-module-eval-source-map','eval-source-map',
 	devServer: {
