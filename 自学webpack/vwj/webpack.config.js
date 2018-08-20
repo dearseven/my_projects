@@ -45,7 +45,7 @@ module.exports = {
 			//chunkFileName: '../js/w.js',
 			filename: '../w.html', //每次调用指定生成的html名称
 			minify: {
-				collapseWhitespace: false //折叠空白区域 也就是压缩代码,先不折叠，方便看
+				collapseWhitespace: true //折叠空白区域 也就是压缩代码,
 			},
 			hash: true,
 			title: 'I am welcome',
@@ -56,7 +56,7 @@ module.exports = {
 			//chunkFileName: '../js/m.js',
 			filename: '../m.html', //每次调用指定生成的html名称
 			minify: {
-				collapseWhitespace: false //折叠空白区域 也就是压缩代码,先不折叠，方便看
+				collapseWhitespace: true //折叠空白区域 也就是压缩代码
 			},
 			hash: true,
 			title: 'I am main',

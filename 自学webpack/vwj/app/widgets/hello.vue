@@ -1,5 +1,3 @@
-
-
 <template>
 	<div class="hello-d_rott">
 		<!-- 因为我配置了webpack编译后的名字是[模块名-原始名字]，这里加了一个[hello-]在前面-->
