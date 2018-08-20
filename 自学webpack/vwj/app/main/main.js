@@ -9,6 +9,7 @@ import banner from "../widgets/banner.vue"
 var bn = new Vue({
 	el: '#_banner',
 	components: {
+		//banner是这个bn的第一个子元素，其实这里实例化的是bn，然后他有子元素banner(banner.vue)
 		banner
 	},
 	methods: {
