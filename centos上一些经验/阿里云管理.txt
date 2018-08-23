@@ -1,0 +1,104 @@
+
+客户端软件putty
+
+一，先去买一个ecs，其实就是一个服务器拉
+二，系统选择CentOS(7.2)
+三，登录以后 [cd +enter]进入的是一个感觉是虚目录没啥用一样，
+	其实如果分配了非root账户以后，进入的就是/home/***/这个目录，
+	[cd / +enter]进入的是根目录.
+ 	我是在根目录下用mkdir wangxu 建立的自己的一个文件夹用于放东西
+四，安装java
+ 1 检查java是否安装#  rpm -qa | grep java
+ 2 如果系统安装了可以删除(看自己想法咯)
+ 安装了centos7系统，发现自带了openjdk,想删除centos自带的jdk,如何做到了。具体方法如下：
+
+  
+ 1.使用rpm命令查看系统已经安装的java包
+ [root@dev]# rpm -qa | grep java
+ java-1.8.0-openjdk-headless-1.8.0.101-3.b13.el7_2.x86_64
+ javapackages-tools-3.4.1-11.el7.noarch
+ tzdata-java-2016f-1.el7.noarch
+ java-1.8.0-openjdk-1.8.0.101-3.b13.el7_2.x86_64
+ Python-javapackages-3.4.1-11.el7.noarch  
+  
+ 2.使用rpm命令删除已安装的java依赖
+ [root@dev]#  rpm -e --nodeps Java-1.8.0-openjdk-1.8.0.101-3.b13.el7_2.x86_64
+ [root@dev]#  rpm -e --nodeps java-1.8.0-openjdk-headless-1.8.0.101-3.b13.el7_2.x86_64
+ [root@dev]#  rpm -e --nodeps tzdata-java-2016f-1.el7.noarch
+ [root@dev]#  rpm -e --nodeps javapackages-tools-3.4.1-11.el7.noarch
+ [root@dev]#  rpm -e --nodeps python-javapackages-3.4.1-11.el7.noarch
+  
+ 3.再次检查java相关依赖以删除
+ [root@dev]# rpm -qa | grep java
+ [root@dev]# java -version
+  
+ 如果输出类似not found command则说明删除完成！
+
+ 3 查看一下当前有哪些jdk可以安装
+ yum search java | grep -i --color JDK 
+ 4 在CentOS linux安装 Java SDK
+ yum install java-1.8.0-openjdk  java-1.8.0-openjdk-devel  #安装openjdk
+ 可以通过 java -version 命令来识别是否配置java成功
+五，安装vsftpd
+ 虽然ssh可以传输文件，但是我没找到免费的ssh客户端。所以用了ftp。
+ 首先说一下，vsftpd会把当前用户系统的用户当作可以使用ftp的用户。
+ 1 检查是否安装了 #rpm -qa |grep vsftpd
+ 2 #yum install vsftpd
+ 3 启动ftp命令#service vsftpd start
+   停止ftp命令#service vsftpd stop
+   重启ftp命令#service vsftpd restart
+ 4 ftp的配置文件主要有三个，位于/etc/vsftpd/目录下，分别是：
+   ftpusers    该文件用来指定那些用户不能访问ftp服务器。
+   user_list   该文件用来指示的默认账户在默认情况下也不能访问ftp
+   vsftpd.conf   vsftpd的主配置文件
+   记得去vsftpd.conf关闭匿名访问->anonymous_enable=NO(记得vsftpd重启服务哦)
+六，ftp的目录
+          用对应的账户（比如第七节我给自己分配一个叫wx的账户）ftp登录时。会进入/home/***/目录[cd+/],这个目录就自己可以用啦。
+          但是有时候我们也需要在读写（特别是写哦）其他文件夹下面的目录。比如在/目录下有个文件夹A。我们用wx这个帐号登录。无法往A里面通过ftp传文件。
+          可以通过sudo chmod 7777 A来设置。就可以读写了哦
+七，分配账户
+ 1、添加用户，首先用adduser命令添加一个普通用户，命令如下：
+
+ #adduser tommy
+ //添加一个名为tommy的用户
+ #passwd tommy   //修改密码
+ Changing password for user tommy.
+ New UNIX password:     //在这里输入新密码
+ Retype new UNIX password:  //再次输入新密码
+ passwd: all authentication tokens updated successfully.
+
+ 2、赋予root权限 （推荐使用方法二。）
+
+ 方法一： 修改 /etc/sudoers 文件，找到下面一行，把前面的注释（#）去掉
+
+ ## Allows people in group wheel to run all commands
+ %wheel    ALL=(ALL)    ALL
+
+ 然后修改用户，使其属于root组（wheel），命令如下：
+
+ #usermod -g root tommy
+
+ 修改完毕，现在可以用tommy帐号登录，然后用命令 su - ，即可获得root权限进行操作。
+
+ 方法二： 修改 /etc/sudoers 文件，找到下面一行，在root下面添加一行，如下所示：
+
+ ## Allow root to run any commands anywhere
+ root    ALL=(ALL)     ALL
+ tommy   ALL=(ALL)     ALL
+
+ 修改完毕，现在可以用tommy帐号登录，然后用命令 su - ，即可获得root权限进行操作。
+
+ 方法三： 修改 /etc/passwd 文件，找到如下行，把用户ID修改为 0 ，如下所示：
+
+ tommy:x:500:500:tommy:/home/tommy:/bin/bash
+
+ 修改后如下
+
+ tommy:x:0:500:tommy:/home/tommy:/bin/bash
+
+ 保存，用tommy账户登录后，直接获取的就是root帐号的权限。
+
+ 友情提醒：虽然方法三看上去简单方便，但一般不推荐使用，推荐使用方法二。
+八，修改查看文件用 vim  强制保存用:w!
+
+

@@ -1,0 +1,37 @@
+首先这里装的是express 4.n
+
+第一步
+npm install -g express
+因为是4.n所以要独立安装generator
+npm install -g express-generator
+
+然后下载sample
+express hello
+
+接下来进入项目的根目录也就是有app.js的目录运行
+npm start
+
+可能会报出
+cannot find module 'xxxxx'
+可以根据提示安装
+npm install -g xxxxx
+
+如果再次运行还有问题的话，例如可能一直报找不到jade
+确定package.json里有添加相应的jade依赖配置
+使用npm install -d 可以自动配置package.json，并安装所有需要依赖的包
+
+然后访问 127.0.0.1:3000
+
+//如何自己搭建express项目
+进入到任意一个文件夹，执行express app命令，就会创建一个app的应用项目，结构如下：
+create : app
+   create : app/package.json
+   create : app/app.js
+   create : app/public
+   create : app/bin
+   create : app/bin/www
+   create : app/public/stylesheets
+   create : app/public/stylesheets/style.css
+   create : app/views
+   create : app/views/index.jade
+   create : app/views/layout.jade

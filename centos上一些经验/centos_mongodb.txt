@@ -1,0 +1,24 @@
+https://docs.mongodb.com/master/tutorial/install-mongodb-on-red-hat/#install-mongodb-community-edition
+1 去官方找安装手册 分类是在 Install on Linux-Install on Red Hat [Install MongoDB Community Edition on Red Hat Enterprise or CentOS Linux]目录下
+2 简单说下我的安装教程，当时的版本是3.4
+  2.1 进入/etc/yum.repos.d/目录,建立文件mongodb-org-3.4.repo [vi mongodb-org-3.4.repo]
+  2.2 insert进入编辑模式，拷贝好官方的一段文本
+	[mongodb-org-3.4]
+	name=MongoDB Repository
+	baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.4/x86_64/
+	gpgcheck=1
+	enabled=1
+	gpgkey=https://www.mongodb.org/static/pgp/server-3.4.asc
+	 按右键拷贝到文件里，然后ESC->:w!->:q
+  2.3 [sudo] yum install -y mongodb-org 等安装完成就可以启动了
+	sudo service mongod start
+	sudo service mongod stop
+	sudo service mongod restart
+  2.4 创建数据库目录
+    我用wx帐号登录，然后在/home/wx/下创建了目录mongo_db_base [mkdir mongo_db_base] 
+	然后/mongod --dbpath ~/mongo_db_base/
+  2.3 切换数据库
+    [service mongod start 启动
+    mongo 进入命令行
+    切换数据库]
+    switched to db mongo_db_base
