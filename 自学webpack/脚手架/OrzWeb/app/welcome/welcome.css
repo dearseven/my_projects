@@ -1,0 +1,9 @@
+body{
+	background:bisque;
+}
+.ff{
+	/*
+	 这里会变成.welcome-ff
+	 因为我配置了webpack编译后的名字是[模块名-原始名字]，这里加了一个[welcome-]在前面
+	 */
+}

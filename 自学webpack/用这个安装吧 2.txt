@@ -1,0 +1,16 @@
+﻿npm install --save-dev webpack webpack-cli webpack-dev-server babel-core babel-loader@7 babel-preset-env babel-preset-react react react-dom style-loader css-loader vue url-loader file-loader
+
+npm install --save-dev vue-loader vue-template-compiler
+
+npm install --save-dev clean-webpack-plugin 
+
+npm install --save-dev html-webpack-plugin
+
+#####npm install --save-dev vux
+
+npm install --save-dev  vue-router
+
+
+因为在package.json 配置了start是运行webpack所以 只要npm start就可以了
+但是不知道为什么npm server不行
+然后把，就是我都不是全局安装的，所以更要配置start命令
