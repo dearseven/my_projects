@@ -1,8 +1,8 @@
 import Vue from 'vue'
 
-import MintUI from 'mint-ui'
-import 'mint-ui/lib/style.css'
-Vue.use(MintUI)
+import Mint from 'mint-ui';
+import 'mint-ui/lib/style.css';
+Vue.use(Mint)
 
 //这个是配置好的路由
 import Router from 'vue-router'

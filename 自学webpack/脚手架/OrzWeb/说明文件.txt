@@ -1,0 +1,36 @@
+1 vue(没有vue-cli,用了vue-router)+webpack+mint-ui
+
+2 安装命令
+npm install --save-dev webpack webpack-cli webpack-dev-server babel-core babel-loader@7 babel-preset-env babel-preset-react react react-dom style-loader css-loader vue url-loader file-loader
+
+npm install --save-dev vue-loader vue-template-compiler
+
+npm install --save-dev clean-webpack-plugin 
+
+npm install --save-dev html-webpack-plugin
+
+npm install --save-dev  vue-router
+
+npm i mint-ui -S
+
+3 webpack.config.js中的css-loader的localIdentName采用的是 '[local]' 
+ 而不是,指定css的类名格式[name]-[local],所以vue组件中的类名选择器不会添加组件名
+ 前缀.
+
+4 采用单页面设计SPA 入口只有一个index,其他的是vwj里的,已经不在这里使用
+
+5 router js动态生成
+	chatlist.vue
+
+6 div和其中文本居中
+  在App.vue中的.app-v_center类选择器
+  
+7 让元素内容不换行,这是li的元素不换行
+ul{
+white-spacing:nowrap;//通过设置这个属性可以让元素不换行
+}
+ul li{
+display:inline-block;//但是不换行的元素必须是行内块级元素
+float:left;
+width:50px;
+}

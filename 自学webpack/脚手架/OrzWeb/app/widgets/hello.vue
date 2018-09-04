@@ -24,7 +24,7 @@
 </script>
 
 <style scoped="scoped">
-	.d_rott {
+	.hello-d_rott {
 		background: white;
 		color: red;
 	}

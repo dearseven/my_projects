@@ -1,5 +1,5 @@
 <template>
-	<div class="atag-stl">
+	<div class="stl">
 		<a :href="hrefTo">
 			<!-- 这个插槽在banner.vue的第二个ul用到了-->
 			<slot></slot>跳转至{{hrefToName}}

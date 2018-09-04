@@ -85,6 +85,7 @@ const webpackConfig = {
 			},
 			{
 				test: /\.css$/,
+				
 				use: [{
 					loader: "style-loader"
 				}, {
@@ -92,7 +93,7 @@ const webpackConfig = {
 					options: {
 						modules: true, // 指定启用css modules
 						//						localIdentName: '[name]__[local]--[hash:base64:5]' // 指定css的类名格式
-						localIdentName: '[name]-[local]' // 指定css的类名格式
+						localIdentName: '[local]' // 指定css的类名格式[name]-[local]
 					}
 				}]
 			},

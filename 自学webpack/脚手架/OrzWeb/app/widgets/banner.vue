@@ -2,14 +2,14 @@
 	<div id="bannerref">
 		我用到了组合vue组件：第二个列表用了atag组件
 		<br/>
-		<ul id="v-for-object" class="banner-ul">
-			<li v-for="(value, key) in objects" class="banner-li">
+		<ul id="v-for-object" class="bul">
+			<li v-for="(value, key) in objects" class="bli">
 				<a href="">{{ key }}_{{ value }}</a>
 			</li>
 		</ul>
 		<br/>
-		<ul id="v-for-object" class="banner-ul">
-			<li v-for="value in object2" class="banner-li">
+		<ul id="v-for-object" class="ul">
+			<li v-for="value in object2" class="bli">
 				<atag v_props_href="welcome">
 					<!-- 显示这个值用到了插槽，可以看atag.vue-->
 					{{value}}
@@ -60,11 +60,11 @@
 <style>
 	ul li {}
 	
-	.ul {
+	.bul {
 		list-style-type: none;
 	}
 	
-	.li {
+	.bli {
 		list-style-type: none;
 		float: left;
 		width: 248px;
