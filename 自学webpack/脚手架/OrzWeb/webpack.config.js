@@ -1,13 +1,9 @@
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-//const vuxLoader = require('vux-loader')
-//const webpackConfig = originalConfig // 原来的 module.exports 代码赋值给变量 webpackConfig
-//module.exports = vuxLoader.merge(webpackConfig, {
-//plugins: ['vux-ui']
-//})
 
-module.exports = {
+/*module.exports*/
+const webpackConfig = {
 	entry: {
 		//m: __dirname + "/app/main/main.js",
 		//w: __dirname + "/app/welcome/welcome.js"
@@ -17,8 +13,7 @@ module.exports = {
 		filename: 'js/[name].js',
 		path: __dirname + '/build',
 		publicPath: 'build/', //指定静态资源 (图片等) 的发布地址，比如图片就在build/imgs/下，因为下面的图片打包设置了./imgs这个目录
-		chunkFilename: '../js/[name].js',
-
+		chunkFilename: '../js/[name].js'
 	},
 	plugins: [
 		new VueLoaderPlugin(),
@@ -47,8 +42,7 @@ module.exports = {
 		//		//	每次清空dist目录
 		new CleanWebpackPlugin(['build']),
 		new HtmlWebpackPlugin({
-			chunks:['i'],
-			//chunkFileName: '../js/w.js',
+			chunks: ['i'],
 			filename: '../index.html', //每次调用指定生成的html名称
 			minify: {
 				collapseWhitespace: false //折叠空白区域 也就是压缩代码,
@@ -57,18 +51,18 @@ module.exports = {
 			title: '',
 			template: './htmlsrc/index.html' //模板地址
 		})
-//		,
-//		new HtmlWebpackPlugin({
-//			chunks:['m'],
-//			//chunkFileName: '../js/m.js',
-//			filename: '../m.html', //每次调用指定生成的html名称
-//			minify: {
-//				collapseWhitespace: true //折叠空白区域 也就是压缩代码
-//			},
-//			hash: true,
-//			title: 'I am main',
-//			template: './htmlsrc/main.html' //模板地址
-//		})
+		//		,
+		//		new HtmlWebpackPlugin({
+		//			chunks:['m'],
+		//			//chunkFileName: '../js/m.js',
+		//			filename: '../m.html', //每次调用指定生成的html名称
+		//			minify: {
+		//				collapseWhitespace: true //折叠空白区域 也就是压缩代码
+		//			},
+		//			hash: true,
+		//			title: 'I am main',
+		//			template: './htmlsrc/main.html' //模板地址
+		//		})
 	],
 	devtool: 'cheap-module-source-map', //'cheap-module-eval-source-map','eval-source-map',
 	devServer: {
@@ -133,3 +127,4 @@ module.exports = {
 	watch: true,
 	mode: 'development'
 };
+module.exports = webpackConfig
