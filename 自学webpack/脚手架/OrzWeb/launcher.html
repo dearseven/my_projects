@@ -2,15 +2,13 @@
 <html>
 
 	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width,initial-scale=1" />
-
+		<meta charset="UTF-8">
 		<title></title>
 	</head>
 
-	<body id="domBody" style="width: 100%;height: 100%;">
+	<body id="domBody">
 		<script>
-			(() => {
+			(function() {
 				if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
 					//															document.getElementById("domBody").style.height = window.screen.height+"px"; //取屏幕分辨率的高和宽，可以解决在webview下的自适应问题
 					//										document.getElementById("domBody").style.width = window.screen.width+"px";
@@ -24,11 +22,16 @@
 					//					document.getElementById("domBody").style.width =
 					//						(document.documentElement.clientWidth || document.body.clientWidth) + "px"
 				}
+				//
+				//讲道理我也 不知道webview为什么时候重新算一下就可以得到正确的高度,
+				//所以先通过这个页面算一次再跳到index
+				window.setTimeout(function() {
+					//alert(document.getElementById("domBody").style.height)
+					window.location.href = "index.html"
+				}, 300)
 			})()
 		</script>
-		<!--style="width: 100%;height: 100%;"在 App.vue里设置的-->
-		<div id="app">
-		</div>
+
 	</body>
 
 </html>

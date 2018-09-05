@@ -13,19 +13,16 @@ import dialog from '../widgets/dialog.vue'
 
 Vue.use(Router)
 const router = new Router({
-	routes: [
-		{
+	routes: [{
 			path: '/',
 			name: 'chatlist',
 			component: chatlist
-		}
-		,
+		},
 		{
 			path: '/dialog/:id',
 			name: 'dialog',
 			component: dialog
-		}
-		,
+		},
 		{
 			path: '/h',
 			name: 'hello',

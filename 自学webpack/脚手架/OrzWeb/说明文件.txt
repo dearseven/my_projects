@@ -1,3 +1,5 @@
+﻿通过launcher.html进入
+
 1 vue(没有vue-cli,用了vue-router)+webpack+mint-ui
 
 2 安装命令
@@ -28,3 +30,6 @@ npm i mint-ui -S
 7 让元素内容不换行
 .max_1_length_hide
 在App.vue中定义
+
+8 兼容手机webview
+<meta name="viewport" content="width=device-width,initial-scale=1" />

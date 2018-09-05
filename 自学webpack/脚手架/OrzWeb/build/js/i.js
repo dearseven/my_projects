@@ -12750,7 +12750,7 @@ var render = function() {
             "div",
             {
               staticStyle: {
-                "font-size": "2.75rem",
+                "font-size": "1.2rem",
                 width: "33.3%",
                 height: "100%",
                 display: "inline-block",
@@ -12777,7 +12777,7 @@ var render = function() {
             "div",
             {
               staticStyle: {
-                "font-size": "2.75rem",
+                "font-size": "1.2rem",
                 width: "33.3%",
                 height: "100%",
                 display: "inline-block",
@@ -12804,7 +12804,7 @@ var render = function() {
             "div",
             {
               staticStyle: {
-                "font-size": "2.75rem",
+                "font-size": "1.2rem",
                 width: "33.3%",
                 height: "100%",
                 display: "inline-block",
@@ -12995,7 +12995,7 @@ var render = function() {
                       staticStyle: {
                         height: "40%",
                         color: "cadetblue",
-                        "font-size": "2.5rem"
+                        "font-size": "1.15rem"
                       }
                     },
                     [
@@ -13012,7 +13012,7 @@ var render = function() {
                       staticStyle: {
                         height: "60%",
                         color: "darkblue",
-                        "font-size": "3.25rem"
+                        "font-size": "1.3rem"
                       }
                     },
                     [

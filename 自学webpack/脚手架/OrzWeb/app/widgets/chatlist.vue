@@ -6,10 +6,10 @@
 			<!--router js动态生成-->
 			<li v-for=" (value, key) in objects " style="height: 15%;text-align: left;width:100%; ">
 				<router-link class="chatlist_link_" style="display: block;height: 98%;width:100%;" :to="{ path: 'dialog/'+value.id } ">
-					<div style="height: 40%;color: cadetblue;font-size: 2.5rem;">
+					<div style="height: 40%;color: cadetblue;font-size: 1.15rem;">
 						&nbsp;{{value.name}}
 					</div>
-					<div class="max_1_length_hide" style="height:60%;color:darkblue;font-size:3.25rem;">
+					<div class="max_1_length_hide" style="height:60%;color:darkblue;font-size:1.3rem;">
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{value.msg}}
 					</div>
 				</router-link>
