@@ -1,9 +1,9 @@
 <template>
-	<div class="hello-d_rott">
+	<div class="hello-d_rott" style="width: 100%;height: 100%;" >
 		<!-- 因为我配置了webpack编译后的名字是[模块名-原始名字]，这里加了一个[hello-]在前面-->
-		<div>
+		<div style="width: 100%;height:20%;" >
 			{{ posts }}</div>
-		<img :src="imgfile"  />
+		<img :src="imgfile" style="width: 50%;height: 50%;"  />
 	</div>
 </template>
 

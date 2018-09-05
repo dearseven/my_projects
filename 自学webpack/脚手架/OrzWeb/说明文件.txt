@@ -1,4 +1,4 @@
-﻿通过launcher.html进入
+通过launcher.html进入
 
 1 vue(没有vue-cli,用了vue-router)+webpack+mint-ui
 
@@ -33,3 +33,20 @@ npm i mint-ui -S
 
 8 兼容手机webview
 <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+9 foot固定在底部,上方list
+	在App.vue中有四个类选择器的样式,可以去参考
+	.main_body {
+		...
+	}
+	
+	.main_container_parent {
+		...
+	}
+	.main_container{
+		...	
+	}
+	
+	.main_footer {
+		...
+	}

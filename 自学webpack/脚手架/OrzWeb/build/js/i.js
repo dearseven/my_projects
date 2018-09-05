@@ -814,6 +814,8 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
 
 exports.default = {
 	name: 'App'
@@ -1004,26 +1006,52 @@ exports.default = {
 				id: 2,
 				name: "dz ",
 				msg: "olleh hello olleh hello olleh hello white-space : normal nowrap white-space : normal nowrap white-space : normal nowrap "
+			}, {
+				id: 2,
+				name: "dz ",
+				msg: "olleh hello olleh hello olleh hello white-space : normal nowrap white-space : normal nowrap white-space : normal nowrap "
+			}, {
+				id: 2,
+				name: "dz ",
+				msg: "olleh hello olleh hello olleh hello white-space : normal nowrap white-space : normal nowrap white-space : normal nowrap "
+			}, {
+				id: 2,
+				name: "dz ",
+				msg: "olleh hello olleh hello olleh hello white-space : normal nowrap white-space : normal nowrap white-space : normal nowrap "
+			}, {
+				id: 2,
+				name: "dz ",
+				msg: "olleh hello olleh hello olleh hello white-space : normal nowrap white-space : normal nowrap white-space : normal nowrap "
+			}, {
+				id: 2,
+				name: "dz ",
+				msg: "olleh hello olleh hello olleh hello white-space : normal nowrap white-space : normal nowrap white-space : normal nowrap "
+			}, {
+				id: 2,
+				name: "dz ",
+				msg: "olleh hello olleh hello olleh hello white-space : normal nowrap white-space : normal nowrap white-space : normal nowrap "
+			}, {
+				id: 2,
+				name: "dz end ",
+				msg: "olleh hello olleh hello olleh hello white-space : normal nowrap white-space : normal nowrap white-space : normal nowrap "
 			}]
 		};
 	},
 
 	methods: {
 		loadMore: function loadMore() {
-			var _this = this;
-
-			this.loading = true;
-			setTimeout(function () {
-				//					let last = this.objects[this.objects.length - 1];
-				//					for(let i = 1; i <= 50; i++) {
-				//						this.objects.push({
-				//							id: (last + i),
-				//							name: "dz ",
-				//							msg: "olleh "
-				//						});
-				//					}
-				_this.loading = false;
-			}, 2500);
+			//				this.loading = true;
+			//				setTimeout(() => {
+			//					let last = this.objects[this.objects.length - 1];
+			//					for(let i = 1; i <= 15; i++) {
+			//						this.objects.push({
+			//							id: (last + i),
+			//							name: "dz ",
+			//							msg: "olleh "
+			//						});
+			//					}
+			//					this.loading = false;
+			//				}, 2500);
 		}
 	}
 };
@@ -1347,7 +1375,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "\n#app {\n\tfont-family: 'Avenir', Helvetica, Arial, sans-serif;\n\t-webkit-font-smoothing: antialiased;\n\t-moz-osx-font-smoothing: grayscale;\n\tbackground-color: #Fc3e50;\n\tmargin-top: 0px;\n\theight: 100%;\n\twidth: 100%;\n}\n* {\n\tmargin: 0px;\n\tpadding: 0px;\n}\na {\n\ttext-decoration: none;\n\tcolor: #333;\n}\n.main_link {\n\ttext-decoration: none;\n\tcolor: #fff;\n}\n.app-v_center {\n\t/*设置这个div自己居中*/\n\twidth: 50%;\n\theight: 50%;\n\toverflow: auto;\n\tmargin: auto;\n\tposition: relative;\n\ttop: 25%;\n\tleft: 0;\n\tbottom: 0;\n\tright: 0;\n\t/*设置div的文本居中*/\n\tline-height: 225%;\n\ttext-align: center;\n\t/*其他设置*/\n\tfont-size: 1.1em;\n\tcolor: white;\n}\n.max_1_length_hide {\n\ttext-overflow: ellipsis;\n\tword-break: keep-all;\n\toverflow: hidden;\n\twhite-space: nowrap;\n\tdisplay: block;\n}\n.noullistyle {\n\tlist-style: none;\n}\n", ""]);
+exports.push([module.i, "\n#app {\n\tfont-family: 'Avenir', Helvetica, Arial, sans-serif;\n\t-webkit-font-smoothing: antialiased;\n\t-moz-osx-font-smoothing: grayscale;\n\t/*background-color: #Fc3e50;*/\n\tmargin-top: 0px;\n\theight: 100%;\n\twidth: 100%;\n}\n* {\n\tmargin: 0px;\n\tpadding: 0px;\n}\na {\n\ttext-decoration: none;\n\tcolor: #333;\n}\n.main_link {\n\ttext-decoration: none;\n\tcolor: #fff;\n}\n.app-v_center {\n\t/*设置这个div自己居中*/\n\twidth: 50%;\n\theight: 50%;\n\toverflow: auto;\n\tmargin: auto;\n\tposition: relative;\n\ttop: 25%;\n\tleft: 0;\n\tbottom: 0;\n\tright: 0;\n\t/*设置div的文本居中*/\n\tline-height: 225%;\n\ttext-align: center;\n\t/*其他设置*/\n\tfont-size: 1.1em;\n\tcolor: white;\n}\n.max_1_length_hide {\n\ttext-overflow: ellipsis;\n\tword-break: keep-all;\n\toverflow: hidden;\n\twhite-space: nowrap;\n\tdisplay: block;\n}\n.noullistyle {\n\tlist-style: none;\n}\n.main_body {\n\tdisplay: block;\n\tposition: relative;\n\twidth: 100%;\n\theight: 100%;\n\tmin-height: 100%;\n}\n.main_container_parent {\n\tposition: fixed;\n\tdisplay: block;\n\tbottom: 14%;\n\theight: 100%;\n\tmin-height: 86%;\n}\n.main_container{\n\tposition: relative;overflow-y: scroll;\n}\n.main_footer {\n\tposition: fixed;\n\tdisplay: block;\n\tleft: 0;\n\tbottom: 0;\n\twidth: 100%;\n\theight: 14%;\n\tz-index: 9999;\n}\n", ""]);
 
 // exports
 exports.locals = {
@@ -1355,7 +1383,11 @@ exports.locals = {
 	"main_link": "main_link",
 	"app-v_center": "app-v_center",
 	"max_1_length_hide": "max_1_length_hide",
-	"noullistyle": "noullistyle"
+	"noullistyle": "noullistyle",
+	"main_body": "main_body",
+	"main_container_parent": "main_container_parent",
+	"main_container": "main_container",
+	"main_footer": "main_footer"
 };
 
 /***/ }),
@@ -12728,109 +12760,118 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticStyle: { width: "100%", height: "100%" }, attrs: { id: "app" } },
-    [
-      _c("router-view", {
-        staticStyle: { height: "86%", "background-color": "aliceblue" }
-      }),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticStyle: {
-            width: "100%",
-            height: "14%",
-            "background-color": "dodgerblue"
-          }
-        },
-        [
-          _c(
-            "div",
-            {
-              staticStyle: {
-                "font-size": "1.2rem",
-                width: "33.3%",
-                height: "100%",
-                display: "inline-block",
-                float: "left"
-              }
-            },
-            [
-              _c(
-                "div",
-                { staticClass: "app-v_center" },
-                [
-                  _c(
-                    "router-link",
-                    { staticClass: "main_link", attrs: { to: "/" } },
-                    [_vm._v("\n\t\t\t\t\t对话")]
-                  )
-                ],
-                1
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticStyle: {
-                "font-size": "1.2rem",
-                width: "33.3%",
-                height: "100%",
-                display: "inline-block",
-                float: "left"
-              }
-            },
-            [
-              _c(
-                "div",
-                { staticClass: "app-v_center" },
-                [
-                  _c(
-                    "router-link",
-                    { staticClass: "main_link", attrs: { to: "/h" } },
-                    [_vm._v("\n\t\t\t\t\t联系人")]
-                  )
-                ],
-                1
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticStyle: {
-                "font-size": "1.2rem",
-                width: "33.3%",
-                height: "100%",
-                display: "inline-block",
-                float: "left"
-              }
-            },
-            [
-              _c(
-                "div",
-                { staticClass: "app-v_center" },
-                [
-                  _c(
-                    "router-link",
-                    { staticClass: "main_link", attrs: { to: "/b" } },
-                    [_vm._v("\n\t\t\t\t\t其他")]
-                  )
-                ],
-                1
-              )
-            ]
-          )
-        ]
-      )
-    ],
-    1
-  )
+  return _c("div", { staticClass: "main_body", attrs: { id: "app" } }, [
+    _c(
+      "div",
+      { staticClass: "main_container_parent" },
+      [
+        _c("router-view", {
+          staticClass: "main_container",
+          staticStyle: { "background-color": "aliceblue" }
+        })
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "main_footer",
+        staticStyle: { "background-color": "dodgerblue" }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticStyle: {
+              "font-size": "1.2rem",
+              width: "33.3%",
+              height: "100%",
+              display: "inline-block",
+              float: "left"
+            }
+          },
+          [
+            _c(
+              "div",
+              {
+                staticClass: "app-v_center",
+                staticStyle: { "overflow-y": "hidden" }
+              },
+              [
+                _c(
+                  "router-link",
+                  { staticClass: "main_link", attrs: { to: "/" } },
+                  [_vm._v("\n\t\t\t\t\t对话")]
+                )
+              ],
+              1
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticStyle: {
+              "font-size": "1.2rem",
+              width: "33.3%",
+              height: "100%",
+              display: "inline-block",
+              float: "left"
+            }
+          },
+          [
+            _c(
+              "div",
+              {
+                staticClass: "app-v_center",
+                staticStyle: { "overflow-y": "hidden" }
+              },
+              [
+                _c(
+                  "router-link",
+                  { staticClass: "main_link", attrs: { to: "/h" } },
+                  [_vm._v("\n\t\t\t\t\t联系人")]
+                )
+              ],
+              1
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticStyle: {
+              "font-size": "1.2rem",
+              width: "33.3%",
+              height: "100%",
+              display: "inline-block",
+              float: "left"
+            }
+          },
+          [
+            _c(
+              "div",
+              {
+                staticClass: "app-v_center",
+                staticStyle: { "overflow-y": "hidden" }
+              },
+              [
+                _c(
+                  "router-link",
+                  { staticClass: "main_link", attrs: { to: "/b" } },
+                  [_vm._v("\n\t\t\t\t\t其他")]
+                )
+              ],
+              1
+            )
+          ]
+        )
+      ]
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -13089,11 +13130,23 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "hello-d_rott" }, [
-    _c("div", [_vm._v("\n\t\t" + _vm._s(_vm.posts))]),
-    _vm._v(" "),
-    _c("img", { attrs: { src: _vm.imgfile } })
-  ])
+  return _c(
+    "div",
+    {
+      staticClass: "hello-d_rott",
+      staticStyle: { width: "100%", height: "100%" }
+    },
+    [
+      _c("div", { staticStyle: { width: "100%", height: "20%" } }, [
+        _vm._v("\n\t\t" + _vm._s(_vm.posts))
+      ]),
+      _vm._v(" "),
+      _c("img", {
+        staticStyle: { width: "50%", height: "50%" },
+        attrs: { src: _vm.imgfile }
+      })
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
