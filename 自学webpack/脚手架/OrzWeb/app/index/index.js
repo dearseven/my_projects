@@ -9,6 +9,7 @@ import Router from 'vue-router'
 import hello from '../widgets/hello.vue'
 import banner from '../widgets/banner.vue'
 import chatlist from '../widgets/chatlist.vue'
+import dialog from '../widgets/dialog.vue'
 
 Vue.use(Router)
 const router = new Router({
@@ -17,6 +18,12 @@ const router = new Router({
 			path: '/',
 			name: 'chatlist',
 			component: chatlist
+		}
+		,
+		{
+			path: '/dialog/:id',
+			name: 'dialog',
+			component: dialog
 		}
 		,
 		{

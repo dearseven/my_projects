@@ -25,12 +25,6 @@ npm i mint-ui -S
 6 div和其中文本居中
   在App.vue中的.app-v_center类选择器
   
-7 让元素内容不换行,这是li的元素不换行
-ul{
-white-spacing:nowrap;//通过设置这个属性可以让元素不换行
-}
-ul li{
-display:inline-block;//但是不换行的元素必须是行内块级元素
-float:left;
-width:50px;
-}
+7 让元素内容不换行
+.max_1_length_hide
+在App.vue中定义

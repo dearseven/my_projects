@@ -2,17 +2,18 @@
 	<div style="margin: 0px;height: 100%;width:100%;">
 		<!--<mt-button type="primary">primary</mt-button>-->
 		<!--<br/>-->
-		<ul style="height: 100%;margin: 0px;" id="dialog_ul" class="noullistyle" v-infinite-scroll="loadMore" infinite-scroll-disabled="loading" infinite-scroll-distance="10">
+		<ul style="height: 100%;margin: 0px;width:100%;" id="dialog_ul" class="noullistyle" v-infinite-scroll="loadMore" infinite-scroll-disabled="loading" infinite-scroll-distance="10">
 			<!--router js动态生成-->
-			<li v-for=" (value, key) in objects " style="height: 10%;text-align: left; ">
-				<router-link class="none" style="white-space : nowrap; display: block;height: 100%;" :to="{ path: 'dialog/'+value.id } " >
-					<div style="height: 40%;color: cadetblue;">
+			<li v-for=" (value, key) in objects " style="height: 15%;text-align: left;width:100%; ">
+				<router-link class="chatlist_link_" style="display: block;height: 98%;width:100%;" :to="{ path: 'dialog/'+value.id } ">
+					<div style="height: 40%;color: cadetblue;font-size: 2.5rem;">
 						&nbsp;{{value.name}}
 					</div>
-					<div style="height:60%;color:darkblue;font-size:18px;display:inline-block">
+					<div class="max_1_length_hide" style="height:60%;color:darkblue;font-size:3.25rem;">
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{value.msg}}
 					</div>
 				</router-link>
+				<div style="width: 100%;height: 1px;background-color: #33333335;"></div>
 			</li>
 		</ul>
 	</div>
@@ -31,6 +32,18 @@
 					id: 2,
 					name: "dz ",
 					msg: "olleh hello olleh hello olleh hello white-space : normal nowrap white-space : normal nowrap white-space : normal nowrap "
+				}, {
+					id: 2,
+					name: "dz ",
+					msg: "olleh hello olleh hello olleh hello white-space : normal nowrap white-space : normal nowrap white-space : normal nowrap "
+				}, {
+					id: 2,
+					name: "dz ",
+					msg: "olleh hello olleh hello olleh hello white-space : normal nowrap white-space : normal nowrap white-space : normal nowrap "
+				}, {
+					id: 2,
+					name: "dz ",
+					msg: "olleh hello olleh hello olleh hello white-space : normal nowrap white-space : normal nowrap white-space : normal nowrap "
 				}]
 			}
 		},
@@ -38,14 +51,14 @@
 			loadMore() {
 				this.loading = true;
 				setTimeout(() => {
-//					let last = this.objects[this.objects.length - 1];
-//					for(let i = 1; i <= 50; i++) {
-//						this.objects.push({
-//							id: (last + i),
-//							name: "dz ",
-//							msg: "olleh "
-//						});
-//					}
+					//					let last = this.objects[this.objects.length - 1];
+					//					for(let i = 1; i <= 50; i++) {
+					//						this.objects.push({
+					//							id: (last + i),
+					//							name: "dz ",
+					//							msg: "olleh "
+					//						});
+					//					}
 					this.loading = false;
 				}, 2500);
 			}
@@ -54,7 +67,11 @@
 </script>
 
 <style>
-	.noullistyle {
-		list-style: none;
+	.chatlist_link_:hover {
+		background-color: #55555533;
+	}
+	
+	.chatlist_link_ {
+		background-color: aliceblue;
 	}
 </style>
