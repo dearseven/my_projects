@@ -53,3 +53,14 @@ npm i mint-ui -S
 
 10 路由状态
 https://segmentfault.com/a/1190000012083511
+
+11 keep-alive针对某些页面缓存某些不缓存
+	在index.js中配置路由的时候就配置是否缓存
+	App.vue中有一段结合劳动人民智慧的写法,来动态渲染 就解决了
+	<keep-alive>
+		<router-view v-if="$route.meta.keepAlive" class="main_container" style="background-color: aliceblue;"></router-view>
+	</keep-alive>
+	<router-view v-if="!$route.meta.keep_alive"></router-view>
+
+12 类似listview一样添加不同的itemview
+	dialog.vue,用了2种方式实现用了<component/>标签或者自己写的一个循环li

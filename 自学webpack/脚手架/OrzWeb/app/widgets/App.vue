@@ -2,9 +2,12 @@
 	<div id="app" class="main_body" style="">
 		<!--  <img src="../../img/r_4.png">-->
 		<div class="main_container_parent">
+			<!--这样配置以后需要缓存的就会在keep-alive中渲染然后缓存,而不需要的就会在外面渲染,不会缓存-->
+			<!--这种写法结合了v-if为false的时候不渲染的功能,真是劳动人民的智慧-->
 			<keep-alive>
-				<router-view class="main_container" style="background-color: aliceblue;"></router-view>
+				<router-view v-if="$route.meta.keepAlive" class="main_container" style="background-color: aliceblue;"></router-view>
 			</keep-alive>
+			<router-view v-if="!$route.meta.keep_alive" class="main_container" style="background-color: aliceblue;"></router-view>
 		</div>
 		<div class="main_footer" style="background-color: dodgerblue;">
 			<div style="font-size: 1.2rem;width: 33.3%;height: 100%;display: inline-block;float: left;">
@@ -75,6 +78,15 @@
 		/*设置div的文本居中*/
 		line-height: 225%;
 		text-align: center;
+		/*其他设置*/
+		font-size: 1.1em;
+		color: white;
+	}
+	
+	.app-div-text-v-center {
+		/*设置div的文本居中*/
+		line-height: 225%;
+		//text-align: center;
 		/*其他设置*/
 		font-size: 1.1em;
 		color: white;
