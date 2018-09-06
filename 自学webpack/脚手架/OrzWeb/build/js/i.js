@@ -816,6 +816,8 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
 
 exports.default = {
 	name: 'App'
@@ -988,7 +990,11 @@ exports.default = {
 		return {
 			objects: [{
 				id: 1,
-				name: "xz ",
+				name: "xz1 ",
+				msg: "hello "
+			}, {
+				id: 1,
+				name: "xz2 ",
 				msg: "hello "
 			}, {
 				id: 2,
@@ -1040,18 +1046,20 @@ exports.default = {
 
 	methods: {
 		loadMore: function loadMore() {
-			//				this.loading = true;
-			//				setTimeout(() => {
-			//					let last = this.objects[this.objects.length - 1];
-			//					for(let i = 1; i <= 15; i++) {
-			//						this.objects.push({
-			//							id: (last + i),
-			//							name: "dz ",
-			//							msg: "olleh "
-			//						});
-			//					}
-			//					this.loading = false;
-			//				}, 2500);
+			var _this = this;
+
+			this.loading = true;
+			setTimeout(function () {
+				var last = _this.objects[_this.objects.length - 1];
+				for (var i = 1; i <= 15; i++) {
+					_this.objects.push({
+						id: last + i,
+						name: "dz ",
+						msg: "olleh "
+					});
+				}
+				_this.loading = false;
+			}, 2500);
 		}
 	}
 };
@@ -1375,7 +1383,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "\n#app {\n\tfont-family: 'Avenir', Helvetica, Arial, sans-serif;\n\t-webkit-font-smoothing: antialiased;\n\t-moz-osx-font-smoothing: grayscale;\n\t/*background-color: #Fc3e50;*/\n\tmargin-top: 0px;\n\theight: 100%;\n\twidth: 100%;\n}\n* {\n\tmargin: 0px;\n\tpadding: 0px;\n}\na {\n\ttext-decoration: none;\n\tcolor: #333;\n}\n.main_link {\n\ttext-decoration: none;\n\tcolor: #fff;\n}\n.app-v_center {\n\t/*设置这个div自己居中*/\n\twidth: 50%;\n\theight: 50%;\n\toverflow: auto;\n\tmargin: auto;\n\tposition: relative;\n\ttop: 25%;\n\tleft: 0;\n\tbottom: 0;\n\tright: 0;\n\t/*设置div的文本居中*/\n\tline-height: 225%;\n\ttext-align: center;\n\t/*其他设置*/\n\tfont-size: 1.1em;\n\tcolor: white;\n}\n.max_1_length_hide {\n\ttext-overflow: ellipsis;\n\tword-break: keep-all;\n\toverflow: hidden;\n\twhite-space: nowrap;\n\tdisplay: block;\n}\n.noullistyle {\n\tlist-style: none;\n}\n.main_body {\n\tdisplay: block;\n\tposition: relative;\n\twidth: 100%;\n\theight: 100%;\n\tmin-height: 100%;\n}\n.main_container_parent {\n\tposition: fixed;\n\tdisplay: block;\n\tbottom: 14%;\n\theight: 100%;\n\tmin-height: 86%;\n}\n.main_container{\n\tposition: relative;overflow-y: scroll;\n}\n.main_footer {\n\tposition: fixed;\n\tdisplay: block;\n\tleft: 0;\n\tbottom: 0;\n\twidth: 100%;\n\theight: 14%;\n\tz-index: 9999;\n}\n", ""]);
+exports.push([module.i, "\n#app {\n\tfont-family: 'Avenir', Helvetica, Arial, sans-serif;\n\t-webkit-font-smoothing: antialiased;\n\t-moz-osx-font-smoothing: grayscale;\n\t/*background-color: #Fc3e50;*/\n\tmargin-top: 0px;\n\theight: 100%;\n\twidth: 100%;\n}\n* {\n\tmargin: 0px;\n\tpadding: 0px;\n}\na {\n\ttext-decoration: none;\n\tcolor: #333;\n}\n.main_link {\n\ttext-decoration: none;\n\tcolor: #fff;\n}\n.app-v_center {\n\t/*设置这个div自己居中*/\n\twidth: 50%;\n\theight: 50%;\n\toverflow: auto;\n\tmargin: auto;\n\tposition: relative;\n\ttop: 25%;\n\tleft: 0;\n\tbottom: 0;\n\tright: 0;\n\t/*设置div的文本居中*/\n\tline-height: 225%;\n\ttext-align: center;\n\t/*其他设置*/\n\tfont-size: 1.1em;\n\tcolor: white;\n}\n.max_1_length_hide {\n\ttext-overflow: ellipsis;\n\tword-break: keep-all;\n\toverflow: hidden;\n\twhite-space: nowrap;\n\tdisplay: block;\n}\n.noullistyle {\n\tlist-style: none;\n}\n.main_body {\n\tdisplay: block;\n\tposition: relative;\n\twidth: 100%;\n\theight: 100%;\n\tmin-height: 100%;\n}\n.main_container_parent {\n\tposition: fixed;\n\tdisplay: block;\n\tbottom: 14%;\n\twidth: 100%;\n\tmin-height: 86%;\n}\n.main_container {\n\tposition: absolute;\n\toverflow-y: scroll;\n}\n.main_footer {\n\tposition: fixed;\n\tdisplay: block;\n\tleft: 0;\n\tbottom: 0;\n\twidth: 100%;\n\theight: 14%;\n\tz-index: 9999;\n}\n", ""]);
 
 // exports
 exports.locals = {
@@ -12765,10 +12773,16 @@ var render = function() {
       "div",
       { staticClass: "main_container_parent" },
       [
-        _c("router-view", {
-          staticClass: "main_container",
-          staticStyle: { "background-color": "aliceblue" }
-        })
+        _c(
+          "keep-alive",
+          [
+            _c("router-view", {
+              staticClass: "main_container",
+              staticStyle: { "background-color": "aliceblue" }
+            })
+          ],
+          1
+        )
       ],
       1
     ),

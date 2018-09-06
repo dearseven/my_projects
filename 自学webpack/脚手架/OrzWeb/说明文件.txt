@@ -50,3 +50,6 @@ npm i mint-ui -S
 	.main_footer {
 		...
 	}
+
+10 路由状态
+https://segmentfault.com/a/1190000012083511

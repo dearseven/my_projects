@@ -26,7 +26,11 @@
 			return {
 				objects: [{
 					id: 1,
-					name: "xz ",
+					name: "xz1 ",
+					msg: "hello "
+				}, {
+					id: 1,
+					name: "xz2 ",
 					msg: "hello "
 				}, {
 					id: 2,
@@ -77,18 +81,18 @@
 		},
 		methods: {
 			loadMore() {
-//				this.loading = true;
-//				setTimeout(() => {
-//					let last = this.objects[this.objects.length - 1];
-//					for(let i = 1; i <= 15; i++) {
-//						this.objects.push({
-//							id: (last + i),
-//							name: "dz ",
-//							msg: "olleh "
-//						});
-//					}
-//					this.loading = false;
-//				}, 2500);
+				this.loading = true;
+				setTimeout(() => {
+					let last = this.objects[this.objects.length - 1];
+					for(let i = 1; i <= 15; i++) {
+						this.objects.push({
+							id: (last + i),
+							name: "dz ",
+							msg: "olleh "
+						});
+					}
+					this.loading = false;
+				}, 2500);
 			}
 		}
 	}

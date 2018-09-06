@@ -2,7 +2,9 @@
 	<div id="app" class="main_body" style="">
 		<!--  <img src="../../img/r_4.png">-->
 		<div class="main_container_parent">
-			<router-view class="main_container" style="background-color: aliceblue;"></router-view>
+			<keep-alive>
+				<router-view class="main_container" style="background-color: aliceblue;"></router-view>
+			</keep-alive>
 		</div>
 		<div class="main_footer" style="background-color: dodgerblue;">
 			<div style="font-size: 1.2rem;width: 33.3%;height: 100%;display: inline-block;float: left;">
@@ -102,11 +104,13 @@
 		position: fixed;
 		display: block;
 		bottom: 14%;
-		height: 100%;
+		width: 100%;
 		min-height: 86%;
 	}
-	.main_container{
-		position: relative;overflow-y: scroll;
+	
+	.main_container {
+		position: absolute;
+		overflow-y: scroll;
 	}
 	
 	.main_footer {

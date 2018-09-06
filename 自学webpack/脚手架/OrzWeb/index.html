@@ -12,23 +12,23 @@
 		<script>
 			(() => {
 				if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
-					//															document.getElementById("domBody").style.height = window.screen.height+"px"; //取屏幕分辨率的高和宽，可以解决在webview下的自适应问题
-					//										document.getElementById("domBody").style.width = window.screen.width+"px";
+					//document.getElementById("domBody").style.height = window.screen.height+"px"; //取屏幕分辨率的高和宽，可以解决在webview下的自适应问题
+					//document.getElementById("domBody").style.width = window.screen.width+"px";
 					document.getElementById("domBody").style.height =
 						(document.documentElement.clientHeight || document.body.clientHeight) + "px"
-					//					document.getElementById("domBody").style.width =
-					//						(document.documentElement.clientWidth || document.body.clientWidth) + "px"
+					document.getElementById("domBody").style.width =
+						(document.documentElement.clientWidth || document.body.clientWidth) + "px"
 				} else {
 					document.getElementById("domBody").style.height =
 						(document.documentElement.clientHeight || document.body.clientHeight) + "px"
-					//					document.getElementById("domBody").style.width =
-					//						(document.documentElement.clientWidth || document.body.clientWidth) + "px"
+					document.getElementById("domBody").style.width =
+						(document.documentElement.clientWidth || document.body.clientWidth) + "px"
 				}
 			})()
 		</script>
 		<!--style="width: 100%;height: 100%;"在 App.vue里设置的-->
 		<div id="app">
 		</div>
-	<script type="text/javascript" src="build/js/i.js?59dd76495f1277088c96"></script></body>
+	<script type="text/javascript" src="build/js/i.js?3fcd0b688257a6ed482d"></script></body>
 
 </html>
