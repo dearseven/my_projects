@@ -1316,17 +1316,23 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
 
 exports.default = {
 	created: function created() {
 		this.toUserId = this.$route.params.id;
+		window._loadMessage = this.loadMessage;
+		console.log("window._loadMessage=" + window._loadMessage);
+	},
+	destroyed: function destroyed() {
+		//console.log("dialog destroyed")
+		window._loadMessage = undefined;
+		console.log("window._loadMessage=" + window._loadMessage);
 	},
 	mounted: function mounted() {
-		var _this = this;
-
-		window.setTimeout(function () {
-			_this.loadMessage();
-		}, 2000);
+		//			window.setTimeout(() => {
+		//				this.loadMessage()
+		//			}, 2000)
 	},
 	data: function data() {
 		return {
@@ -1353,15 +1359,15 @@ exports.default = {
 			return "sv";
 		},
 		loadMessage: function loadMessage() {
-			var _this2 = this;
+			var _this = this;
 
 			//这里假设从native端获取的数据 
-			var items = [[1, "你在做什么呢?", "2018-09-06 08:01:53", 1], [0, "梦里打字", "2018-09-06 08:02:30", 1], [1, "那怕是醉生梦死啊", "2018-09-06 08:02:03", 1], [0, "哈哈哈,你知道就好啊", "2018-09-06 08:02:20", 1], [1, "那你再睡一下,我9点再联系你", "2018-09-06 08:03:01", 1]];
+			var items = [[1, "你在做什么呢1111111111111111111111111?", "2018-09-06 08:01:53", 1, 100], [0, "梦里打字2222222222222222222222222222", "2018-09-06 08:02:30", 1, 101], [1, "那怕是醉生梦死啊33333333333333333333333那怕是醉生梦死啊33333333333333333333333", "2018-09-06 08:02:03", 1, 102], [0, "哈哈哈,你知道就好啊444444444444444444444", "2018-09-06 08:02:20", 1, 103], [1, "那你再睡一下,我9点再联系你5555555555555555", "2018-09-06 08:03:01", 1, 104], [0, "オーケー～また明日ね！6666666666666666666", "2018-09-06 08:03:01", 1, 105]];
 			items.forEach(function (e, i) {
 				window.setTimeout(function () {
 					//console.log(e + " " + i)
-					_this2.datas.push(e);
-				}, i * 800);
+					_this.datas.push(e);
+				}, i * 500);
 			});
 		},
 		getMessage: function getMessage() {},
@@ -1378,6 +1384,11 @@ exports.default = {
 		//			}
 	}
 };
+
+
+window.setTimeout(function () {
+	window._loadMessage();
+}, 2000);
 
 /***/ }),
 
@@ -1439,10 +1450,20 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
+//
+//
+//
 
 //接收消息的组件
 exports.default = {
 	props: ["_item"],
+	mounted: function mounted() {
+		var span0 = document.getElementById("span_rv_0_" + this._item[4]);
+		span0.style.paddingBottom = "10px";
+		span0.style.paddingTop = "10px";
+	},
 	data: function data() {
 		return {
 			//因为这个值是父组件传过来了 这里用item替换_item ,不直接修改_item
@@ -1472,10 +1493,22 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 //发送消息的组件
 exports.default = {
 	props: ["_item"],
+	mounted: function mounted() {
+		var span1 = document.getElementById("span_sv_1_" + this._item[4]);
+		span1.style.paddingBottom = "10px";
+		span1.style.paddingTop = "10px";
+	},
 	data: function data() {
 		return {
 			//因为这个值是父组件传过来了 这里用item替换_item ,不直接修改_item
@@ -1834,7 +1867,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -1874,7 +1907,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -1893,10 +1926,12 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.send_pop {\n}\n", ""]);
 
 // exports
-
+exports.locals = {
+	"send_pop": "send_pop"
+};
 
 /***/ }),
 
@@ -13613,15 +13648,57 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      _c(
-        "div",
-        _vm._l(_vm.datas, function(item) {
-          return _c(_vm.getType(item[0]), {
-            tag: "component",
-            attrs: { _item: item }
+      _c("div", { staticStyle: { width: "100%", height: "100%" } }, [
+        _c(
+          "div",
+          { staticStyle: { width: "100%", height: "100%" } },
+          _vm._l(_vm.datas, function(item) {
+            return _c(
+              "div",
+              {
+                staticStyle: {
+                  overflow: "auto",
+                  "list-style": "none",
+                  width: "100%",
+                  "min-height": "1%",
+                  height: "auto"
+                }
+              },
+              [
+                item[0] == 0
+                  ? _c(
+                      "div",
+                      {
+                        staticStyle: {
+                          width: "100%",
+                          "min-height": "1rem",
+                          height: "auto"
+                        }
+                      },
+                      [_c("rv", { attrs: { _item: item } })],
+                      1
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                item[0] == 1
+                  ? _c(
+                      "div",
+                      {
+                        staticStyle: {
+                          width: "100%",
+                          "min-height": "1rem",
+                          height: "auto"
+                        }
+                      },
+                      [_c("sv", { attrs: { _item: item } })],
+                      1
+                    )
+                  : _vm._e()
+              ]
+            )
           })
-        })
-      )
+        )
+      ])
     ]
   )
 }
@@ -13687,7 +13764,37 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("\n\treciever:" + _vm._s(_vm.item[1]) + "\n")])
+  return _c("div", { staticStyle: { width: "100%", height: "auto" } }, [
+    _c(
+      "span",
+      {
+        staticStyle: {
+          float: "left",
+          display: "inline-block",
+          width: "60%",
+          height: "100%",
+          "background-color": "gold"
+        },
+        attrs: { id: "span_rv_0_" + _vm.item[4] }
+      },
+      [_vm._v("\n\t\t\t" + _vm._s(_vm.item[1]) + "\n\t")]
+    ),
+    _vm._v(" "),
+    _c(
+      "span",
+      {
+        staticStyle: {
+          float: "left",
+          display: "inline-block",
+          width: "40%",
+          height: "100%",
+          "background-color": "#FFE4C4"
+        },
+        attrs: { id: "span_rv_1_" + _vm.item[4] }
+      },
+      [_vm._v("\n\t\t\t \n\t")]
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -13711,7 +13818,41 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("\n\tsend:" + _vm._s(_vm.item[1]) + "\n")])
+  return _c("div", { staticStyle: { width: "100%", height: "auto" } }, [
+    _c(
+      "span",
+      {
+        staticStyle: {
+          float: "left",
+          display: "inline-block",
+          width: "40%",
+          height: "100%",
+          "background-color": "#FFE4C4"
+        },
+        attrs: { id: "span_sv_0_" + _vm.item[4] }
+      },
+      [_vm._v("\n\t\t \n\t\t")]
+    ),
+    _vm._v(" "),
+    _c(
+      "span",
+      {
+        staticStyle: {
+          float: "left",
+          display: "inline-block",
+          width: "60%",
+          height: "100%",
+          "background-color": "gold"
+        },
+        attrs: { id: "span_sv_1_" + _vm.item[4] }
+      },
+      [
+        _c("span", { staticStyle: { float: "right" } }, [
+          _vm._v("\n\t\t\t" + _vm._s(_vm.item[1]) + "\n\t\t\t")
+        ])
+      ]
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

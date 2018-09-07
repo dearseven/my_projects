@@ -64,3 +64,9 @@ https://segmentfault.com/a/1190000012083511
 
 12 类似listview一样添加不同的itemview
 	dialog.vue,用了2种方式实现用了<component/>标签或者自己写的一个循环li
+
+13 组件的id动态生成
+	<span :id="'span_sv_1_'+item[4]"></span>
+	item是组件的数据,是一个数组
+	
+14 关于高度设定的问题,有一些需要高度自适应的地方不能设置死高度,请参考dialog.vue生成send_view和reciever_view的生成和组件内部
