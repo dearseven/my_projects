@@ -1018,7 +1018,12 @@ Object.defineProperty(exports, "__esModule", {
 //
 
 exports.default = {
-	name: 'App'
+	name: 'App',
+	mounted: function mounted() {
+		//因为键盘弹出会引起百分比布局的比例失调,所以用px换算
+		var bodyBaseHeight = document.documentElement.clientHeight || document.body.clientHeight;
+		document.getElementById("main_footer_").style.height = bodyBaseHeight * 0.09 + "px";
+	}
 };
 
 /***/ }),
@@ -1323,6 +1328,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
 
 exports.default = {
 	created: function created() {
@@ -1343,6 +1349,15 @@ exports.default = {
 		window.setTimeout(function () {
 			_this.loadMessage();
 		}, 2000);
+		//因为键盘弹出会引起百分比布局的比例失调,所以用px换算
+		var bodyBaseHeight = document.documentElement.clientHeight || document.body.clientHeight;
+		document.getElementById("dialog_txt_root").style.height = bodyBaseHeight * 0.085 + "px";
+		document.getElementById("dialog_txt_root").style.bottom = bodyBaseHeight * 0.095 + "px";
+		document.getElementById("dialog_top_area").style.height = bodyBaseHeight * 0.1 + "px";
+
+		//			document.getElementById("dialog_scroll_root").style.height=(bodyBaseHeight*0.81)+"px";	
+		//			document.getElementById("dialog_scroll_root").style.top=(bodyBaseHeight*0.1)+"px";
+		//						document.getElementById("dialog_scroll_root").style.bottom=(bodyBaseHeight*0.19)+"px";		
 	},
 	data: function data() {
 		return {
@@ -1372,7 +1387,7 @@ exports.default = {
 			var _this2 = this;
 
 			//这里假设从native端获取的数据 
-			var items = [[1, "你在做什么呢1111111111111111111111111?", "2018-09-06 08:01:53", 1, 100], [0, "梦里打字2222222222222222222222222222", "2018-09-06 08:02:30", 1, 101], [1, "那怕是醉生梦死啊33333333333333333333333那怕是醉生梦死啊33333333333333333333333", "2018-09-06 08:02:03", 1, 102], [0, "哈哈哈,你知道就好啊444444444444444444444", "2018-09-06 08:02:20", 1, 103], [1, "那你再睡一下,我9点再联系你5555555555555555", "2018-09-06 08:03:01", 1, 104], [0, "オーケー～また明日ね！6666666666666666666", "2018-09-06 08:03:01", 1, 105]];
+			var items = [[1, "你在做什么呢?", "2018-09-06 08:01:53", 1, 100], [0, "梦里打字2222222222222222222222222222", "2018-09-06 08:02:30", 1, 101], [1, "那怕是醉生梦死啊33333333333333333333333那怕是醉生梦死啊33333333333333333333333", "2018-09-06 08:02:03", 1, 102], [0, "哈哈哈,你知道就好啊444444444444444444444", "2018-09-06 08:02:20", 1, 103], [1, "那你再睡一下,我9点再联系你5555555555555555", "2018-09-06 08:03:01", 1, 104], [0, "オーケー～また明日ね！6666666666666666666", "2018-09-06 08:03:01", 1, 105]];
 			items.forEach(function (e, i) {
 				window.setTimeout(function () {
 					//console.log(e + " " + i)
@@ -1387,7 +1402,11 @@ exports.default = {
 		getMessage: function getMessage() {},
 		sendMessage: function sendMessage() {},
 		clickSend: function clickSend() {
-			this.datas.push([new Date().getTime() % 2, new Date().getTime(), "2018-09-06 08:01:53", 1, 100]);
+			var inputer = document.getElementById("dialog_txt_input");
+			var str = inputer.value;
+
+			this.datas.push([new Date().getTime() % 2, str, dateFtt("yyyy-MM-dd HH:mm:ss", new Date()), 1, 106]);
+			inputer.value = "";
 			window.setTimeout(function () {
 				var scroller = document.getElementById("dialog_scroll_root");
 				scroller.scrollTop = scroller.scrollHeight;
@@ -1405,11 +1424,34 @@ exports.default = {
 		//			}
 	}
 
-	//	window.setTimeout(function() {
-	//		window._loadMessage()
-	//	}, 2000);
-
+	/**
+ * 使用
+ *   var crtTime = new Date(value);
+    return top.dateFtt("yyyy-MM-dd hh:mm:ss",crtTime);//直接调用公共JS里面的时间类处理的办法     
+ * @param {Object} fmt
+ * @param {Object} date
+ */
 };
+function dateFtt(fmt, date) {
+	//author: meizz   
+	var o = {
+		"M+": date.getMonth() + 1, //月份   
+		"d+": date.getDate(), //日   
+		"h+": date.getHours(), //小时   
+		"m+": date.getMinutes(), //分   
+		"s+": date.getSeconds(), //秒   
+		"q+": Math.floor((date.getMonth() + 3) / 3), //季度   
+		"S": date.getMilliseconds() //毫秒   
+	};
+	if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length));
+	for (var k in o) {
+		if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
+	}return fmt;
+}
+
+//		window.setTimeout(function() {
+//			alert(dateFtt)
+//		}, 2000);
 
 /***/ }),
 
@@ -1798,7 +1840,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "\n#app {\n\tfont-family: 'Avenir', Helvetica, Arial, sans-serif;\n\t-webkit-font-smoothing: antialiased;\n\t-moz-osx-font-smoothing: grayscale;\n\t/*background-color: #Fc3e50;*/\n\tmargin-top: 0px;\n\theight: 100%;\n\twidth: 100%;\n}\n* {\n\tmargin: 0px;\n\tpadding: 0px;\n}\na {\n\ttext-decoration: none;\n\tcolor: #333;\n}\n.main_link {\n\ttext-decoration: none;\n\tcolor: #fff;\n}\n.app-v_center {\n\t/*设置这个div自己居中*/\n\twidth: 50%;\n\theight: 50%;\n\toverflow: auto;\n\tmargin: auto;\n\tposition: relative;\n\ttop: 25%;\n\tleft: 0;\n\tbottom: 0;\n\tright: 0;\n\t/*设置div的文本居中*/\n\tline-height: 225%;\n\ttext-align: center;\n\t/*其他设置*/\n\tfont-size: 1.1em;\n\tcolor: white;\n}\n.app-div-text-v-center {\n\t/*设置div的文本居中*/\n\tline-height: 225%;\n\t//text-align: center;\n\t/*其他设置*/\n\tfont-size: 1.1em;\n\tcolor: white;\n}\n\n/*div只显示一行*/\n.max_1_length_hide {\n\ttext-overflow: ellipsis;\n\tword-break: keep-all;\n\toverflow: hidden;\n\twhite-space: nowrap;\n\tdisplay: block;\n}\n.noullistyle {\n\tlist-style: none;\n}\n/*start-这一整套是为了建立一个content+footer的结构*/\n.main_body {\n\tdisplay: block;\n\tposition: relative;\n\twidth: 100%;\n\theight: 100%;\n\tmin-height: 100%;\n}\n.main_container_parent {\n\tposition: fixed;\n\tdisplay: block;\n\tbottom: 14%;\n\twidth: 100%;\n\tmin-height: 86%;\n}\n.main_container {\n\tposition: absolute;\n\toverflow-y: scroll;\n}\n.main_footer {\n\tposition: fixed;\n\tdisplay: block;\n\tleft: 0;\n\tbottom: 0;\n\twidth: 100%;\n\theight: 14%;\n\tz-index: 9999;\n}\n/*end-这一整套是为了建立一个content+footer的结构*/\n\n/*下面这个css是为了让div刚和内容一样大*/\n.div_min_fit_content {\n\twidth: -moz-fill-available;\n\twidth: -moz-available;\n\t/* FireFox目前这个生效 */\n\twidth: fill-available;\n\twidth: -webkit-fill-available;\n\twidth: -webkit-fit-content;\n\twidth: -webkit-min-content;\n}\n", ""]);
+exports.push([module.i, "\n#app {\n\t\tfont-family: 'Avenir', Helvetica, Arial, sans-serif;\n\t\t-webkit-font-smoothing: antialiased;\n\t\t-moz-osx-font-smoothing: grayscale;\n\t\t/*background-color: #Fc3e50;*/\n\t\tmargin-top: 0px;\n\t\theight: 100%;\n\t\twidth: 100%;\n}\n* {\n\t\tmargin: 0px;\n\t\tpadding: 0px;\n}\na {\n\t\ttext-decoration: none;\n\t\tcolor: #333;\n}\n.main_link {\n\t\ttext-decoration: none;\n\t\tcolor: #fff;\n}\n.app-v_center {\n\t\t/*设置这个div自己居中*/\n\t\twidth: 50%;\n\t\theight: 50%;\n\t\toverflow: auto;\n\t\tmargin: auto;\n\t\tposition: relative;\n\t\ttop: 25%;\n\t\tleft: 0;\n\t\tbottom: 0;\n\t\tright: 0;\n\t\t/*设置div的文本居中*/\n\t\tline-height: 225%;\n\t\ttext-align: center;\n\t\t/*其他设置*/\n\t\tfont-size: 1.1em;\n\t\tcolor: white;\n}\n.app-div-text-v-center {\n\t\t/*设置div的文本居中*/\n\t\tline-height: 225%;\n\t\t//text-align: center;\n\t\t/*其他设置*/\n\t\tfont-size: 1.1em;\n\t\tcolor: white;\n}\n\t/*div只显示一行*/\n.max_1_length_hide {\n\t\ttext-overflow: ellipsis;\n\t\tword-break: keep-all;\n\t\toverflow: hidden;\n\t\twhite-space: nowrap;\n\t\tdisplay: block;\n}\n.noullistyle {\n\t\tlist-style: none;\n}\n\t/*start-这一整套是为了建立一个content+footer的结构*/\n.main_body {\n\t\tdisplay: block;\n\t\tposition: relative;\n\t\twidth: 100%;\n\t\theight: 100%;\n\t\tmin-height: 100%;\n}\n.main_container_parent {\n\t\tposition: fixed;\n\t\tdisplay: block;\n\t\tbottom: 9%;\n\t\twidth: 100%;\n\t\tmin-height: 90.5%;\n}\n.main_container {\n\t\tposition: absolute;\n\t\toverflow-y: scroll;\n}\n.main_footer {\n\t\tposition: fixed;\n\t\tdisplay: block;\n\t\tleft: 0;\n\t\tbottom: 0;\n\t\twidth: 100%;\n\t\theight: 9%;\n\t\tz-index: 9999;\n}\n\t/*end-这一整套是为了建立一个content+footer的结构*/\n\t/*下面这个css是为了让div刚和内容一样大*/\n.div_min_fit_content {\n\t\twidth: -moz-fill-available;\n\t\twidth: -moz-available;\n\t\t/* FireFox目前这个生效 */\n\t\twidth: fill-available;\n\t\twidth: -webkit-fill-available;\n\t\twidth: -webkit-fit-content;\n\t\t/*\t\twidth: -webkit-min-content;\n*/\n}\n", ""]);
 
 // exports
 exports.locals = {
@@ -1893,7 +1935,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -1933,7 +1975,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "\n.reciever_view_show_txt_c {\n\tfloat: left;\n\tdisplay: block;\n\twidth: 60%;\n\t/*max-width: 90%;*/\n\theight: 100%;\n}\n\n\n", ""]);
+exports.push([module.i, "\n.reciever_view_show_txt_c {\n\tfloat: left;\n\tdisplay: block;\n\twidth: 60%;\n\t/*max-width: 90%;*/\n\theight: 100%;\n}\n", ""]);
 
 // exports
 exports.locals = {
@@ -13326,14 +13368,15 @@ var render = function() {
         "div",
         {
           staticClass: "main_footer",
-          staticStyle: { "background-color": "dodgerblue" }
+          staticStyle: { "background-color": "dodgerblue" },
+          attrs: { id: "main_footer_" }
         },
         [
           _c(
             "div",
             {
               staticStyle: {
-                "font-size": "1.2rem",
+                "font-size": "0.8rem",
                 width: "33.3%",
                 height: "100%",
                 display: "inline-block",
@@ -13363,7 +13406,7 @@ var render = function() {
             "div",
             {
               staticStyle: {
-                "font-size": "1.2rem",
+                "font-size": "0.8rem",
                 width: "33.3%",
                 height: "100%",
                 display: "inline-block",
@@ -13393,7 +13436,7 @@ var render = function() {
             "div",
             {
               staticStyle: {
-                "font-size": "1.2rem",
+                "font-size": "0.8rem",
                 width: "33.3%",
                 height: "100%",
                 display: "inline-block",
@@ -13669,7 +13712,8 @@ var render = function() {
             height: "10%",
             width: "100%",
             "background-color": "cadetblue"
-          }
+          },
+          attrs: { id: "dialog_top_area" }
         },
         [
           _c("div", { staticStyle: { "margin-left": "5%" } }, [
@@ -13689,7 +13733,7 @@ var render = function() {
         {
           staticStyle: {
             width: "100%",
-            height: "80%",
+            height: "81%",
             top: "10%",
             position: "absolute",
             overflow: "overlay"
@@ -13765,10 +13809,11 @@ var render = function() {
             overflow: "hidden",
             "z-index": "1999",
             position: "fixed",
-            bottom: "15%",
+            bottom: "9.5%",
             height: "8.5%",
             width: "95%"
-          }
+          },
+          attrs: { id: "dialog_txt_root" }
         },
         [
           _c("input", {
@@ -13779,7 +13824,7 @@ var render = function() {
               float: "left",
               display: "inline-block"
             },
-            attrs: { type: "text" }
+            attrs: { id: "dialog_txt_input", type: "text" }
           }),
           _vm._v(" "),
           _c(
@@ -13974,11 +14019,11 @@ var render = function() {
               staticClass: "div_min_fit_content",
               staticStyle: {
                 color: "#efefef",
+                "margin-right": "2rem",
                 "padding-top": "0.5rem",
                 "padding-bottom": "0.5rem",
                 "background-color": "darkseagreen",
-                "font-size": "1.15rem",
-                "margin-right": "2rem"
+                "font-size": "1.15rem"
               }
             },
             [_vm._v(_vm._s(_vm.item[1]))]
@@ -13990,7 +14035,9 @@ var render = function() {
               staticStyle: {
                 float: "right",
                 color: "#555555aa",
-                "font-size": "0.8rem"
+                "font-size": "0.8rem",
+                "padding-bottom": "0.5rem",
+                "margin-right": "0.25rem"
               }
             },
             [_vm._v(":我  ")]

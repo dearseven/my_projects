@@ -9,20 +9,20 @@
 			</keep-alive>
 			<router-view v-if="!$route.meta.keep_alive" class="main_container" style="background-color: aliceblue;"></router-view>
 		</div>
-		<div class="main_footer" style="background-color: dodgerblue;">
-			<div style="font-size: 1.2rem;width: 33.3%;height: 100%;display: inline-block;float: left;">
+		<div id="main_footer_" class="main_footer" style="background-color: dodgerblue;">
+			<div style="font-size: 0.8rem;width: 33.3%;height: 100%;display: inline-block;float: left;">
 				<div class="app-v_center" style="overflow-y: hidden;">
 					<router-link to="/" class="main_link">
 						对话</router-link>
 				</div>
 			</div>
-			<div style="font-size:  1.2rem;width: 33.3%;height: 100%;display: inline-block;float: left;">
+			<div style="font-size:  0.8rem;width: 33.3%;height: 100%;display: inline-block;float: left;">
 				<div class="app-v_center" style="overflow-y: hidden;">
 					<router-link to="/h" class="main_link">
 						联系人</router-link>
 				</div>
 			</div>
-			<div style="font-size:  1.2rem;width: 33.3%;height: 100%;display: inline-block;float: left;">
+			<div style="font-size:  0.8rem;width: 33.3%;height: 100%;display: inline-block;float: left;">
 				<div class="app-v_center" style="overflow-y: hidden;">
 					<router-link to="/b" class="main_link">
 						其他</router-link>
@@ -34,7 +34,12 @@
 
 <script>
 	export default {
-		name: 'App'
+		name: 'App',
+		mounted() {
+			//因为键盘弹出会引起百分比布局的比例失调,所以用px换算
+			let bodyBaseHeight = (document.documentElement.clientHeight || document.body.clientHeight);
+			document.getElementById("main_footer_").style.height = (bodyBaseHeight * 0.09) + "px";
+		}
 	}
 </script>
 
@@ -91,8 +96,8 @@
 		font-size: 1.1em;
 		color: white;
 	}
-	
 	/*div只显示一行*/
+	
 	.max_1_length_hide {
 		text-overflow: ellipsis;
 		word-break: keep-all;
@@ -117,9 +122,9 @@
 	.main_container_parent {
 		position: fixed;
 		display: block;
-		bottom: 14%;
+		bottom: 9%;
 		width: 100%;
-		min-height: 86%;
+		min-height: 90.5%;
 	}
 	
 	.main_container {
@@ -133,12 +138,12 @@
 		left: 0;
 		bottom: 0;
 		width: 100%;
-		height: 14%;
+		height: 9%;
 		z-index: 9999;
 	}
 	/*end-这一整套是为了建立一个content+footer的结构*/
-	
 	/*下面这个css是为了让div刚和内容一样大*/
+	
 	.div_min_fit_content {
 		width: -moz-fill-available;
 		width: -moz-available;
@@ -146,6 +151,7 @@
 		width: fill-available;
 		width: -webkit-fill-available;
 		width: -webkit-fit-content;
-		width: -webkit-min-content;
+		/*		width: -webkit-min-content;
+*/
 	}
 </style>

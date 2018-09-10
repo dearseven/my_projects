@@ -10,25 +10,28 @@
 
 	<body id="domBody" style="width: 100%;height: 100%;">
 		<script>
+			var bodyBaseHeight = 0;
 			(() => {
-				if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
-					//document.getElementById("domBody").style.height = window.screen.height+"px"; //取屏幕分辨率的高和宽，可以解决在webview下的自适应问题
-					//document.getElementById("domBody").style.width = window.screen.width+"px";
-					document.getElementById("domBody").style.height =
-						(document.documentElement.clientHeight || document.body.clientHeight) + "px"
-					document.getElementById("domBody").style.width =
-						(document.documentElement.clientWidth || document.body.clientWidth) + "px"
-				} else {
-					document.getElementById("domBody").style.height =
-						(document.documentElement.clientHeight || document.body.clientHeight) + "px"
-					document.getElementById("domBody").style.width =
-						(document.documentElement.clientWidth || document.body.clientWidth) + "px"
-				}
+				//if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+				//document.getElementById("domBody").style.height = window.screen.height+"px"; //取屏幕分辨率的高和宽，可以解决在webview下的自适应问题
+				//document.getElementById("domBody").style.width = window.screen.width+"px";
+				document.getElementById("domBody").style.height =
+					(document.documentElement.clientHeight || document.body.clientHeight) + "px"
+				bodyBaseHeight = (document.documentElement.clientHeight || document.body.clientHeight);
+				//alert(bodyBaseHeight)
+				document.getElementById("domBody").style.width =
+					(document.documentElement.clientWidth || document.body.clientWidth) + "px"
+				//				} else {
+				//					document.getElementById("domBody").style.height =
+				//						(document.documentElement.clientHeight || document.body.clientHeight) + "px"
+				//					document.getElementById("domBody").style.width =
+				//						(document.documentElement.clientWidth || document.body.clientWidth) + "px"
+				//				}
 			})()
 		</script>
 		<!--style="width: 100%;height: 100%;"在 App.vue里设置的-->
 		<div id="app">
 		</div>
-	<script type="text/javascript" src="build/js/i.js?0b9ae3acbd684d7e71cb"></script></body>
+	<script type="text/javascript" src="build/js/i.js?c280ae05f05acbede37a"></script></body>
 
 </html>

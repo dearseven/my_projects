@@ -5,8 +5,8 @@
 			</span>
 		<span :id="'span_sv_1_'+item[4]" style="float: left;display: inline-block;width: 60%;height: 100%;">
 				<span style="float: right;">
-				<div class="div_min_fit_content" style="color:#efefef;padding-top: 0.5rem;padding-bottom:0.5rem;;background-color: darkseagreen;font-size:1.15rem;margin-right: 2rem;">{{item[1]}}</div>
-				<span style="float:right;color:#555555aa;font-size: 0.8rem;">:我&nbsp;&nbsp;</span>
+				<div class="div_min_fit_content" style="color:#efefef;margin-right: 2rem;padding-top: 0.5rem;padding-bottom:0.5rem;background-color: darkseagreen;font-size:1.15rem;">{{item[1]}}</div>
+				<span style="float:right;color:#555555aa;font-size: 0.8rem;padding-bottom:0.5rem;margin-right: 0.25rem;">:我&nbsp;&nbsp;</span>
 		</span>
 		</span>
 	</div>
