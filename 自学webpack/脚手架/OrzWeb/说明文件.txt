@@ -70,3 +70,28 @@ https://segmentfault.com/a/1190000012083511
 	item是组件的数据,是一个数组
 	
 14 关于高度设定的问题,有一些需要高度自适应的地方不能设置死高度,请参考dialog.vue生成send_view和reciever_view的生成和组件内部
+
+15 路由传值
+	注册路由时path: '/dialog/:id/:name',
+	页面写路由时:
+	<router-link  :to="{ path: 'dialog/'+value.id+'/'+value.name } ">
+	template中{{$route.params.name}}
+	js中this.$route.params.id
+
+16 假设一个vue组件的实例中有一个方法叫A,要被android端调用
+	因为是vue组件的方法,所以调用不到,做法就是在vue的mounted(created)中把方法注册到window上,比如叫AA,然后android端调用AA,
+	在组件destroyed的时候再注销window上的AA
+	参考dialog.vue的组件方法loadMessage
+	
+17 全局css卸载App.vue中
+
+18 	/*下面这个css是为了让div刚和内容一样大*/
+	.div_min_fit_content {
+		width: -moz-fill-available;
+		width: -moz-available;
+		/* FireFox目前这个生效 */
+		width: fill-available;
+		width: -webkit-fill-available;
+		width: -webkit-fit-content;
+		width: -webkit-min-content;
+	}

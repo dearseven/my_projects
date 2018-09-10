@@ -1317,22 +1317,32 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 exports.default = {
 	created: function created() {
 		this.toUserId = this.$route.params.id;
+		//将方法注册到window上
 		window._loadMessage = this.loadMessage;
 		console.log("window._loadMessage=" + window._loadMessage);
 	},
 	destroyed: function destroyed() {
 		//console.log("dialog destroyed")
+		//将方法从window上取消
 		window._loadMessage = undefined;
 		console.log("window._loadMessage=" + window._loadMessage);
 	},
 	mounted: function mounted() {
-		//			window.setTimeout(() => {
-		//				this.loadMessage()
-		//			}, 2000)
+		var _this = this;
+
+		window.setTimeout(function () {
+			_this.loadMessage();
+		}, 2000);
 	},
 	data: function data() {
 		return {
@@ -1359,19 +1369,30 @@ exports.default = {
 			return "sv";
 		},
 		loadMessage: function loadMessage() {
-			var _this = this;
+			var _this2 = this;
 
 			//这里假设从native端获取的数据 
 			var items = [[1, "你在做什么呢1111111111111111111111111?", "2018-09-06 08:01:53", 1, 100], [0, "梦里打字2222222222222222222222222222", "2018-09-06 08:02:30", 1, 101], [1, "那怕是醉生梦死啊33333333333333333333333那怕是醉生梦死啊33333333333333333333333", "2018-09-06 08:02:03", 1, 102], [0, "哈哈哈,你知道就好啊444444444444444444444", "2018-09-06 08:02:20", 1, 103], [1, "那你再睡一下,我9点再联系你5555555555555555", "2018-09-06 08:03:01", 1, 104], [0, "オーケー～また明日ね！6666666666666666666", "2018-09-06 08:03:01", 1, 105]];
 			items.forEach(function (e, i) {
 				window.setTimeout(function () {
 					//console.log(e + " " + i)
-					_this.datas.push(e);
+					_this2.datas.push(e);
+					window.setTimeout(function () {
+						var scroller = document.getElementById("dialog_scroll_root");
+						scroller.scrollTop = scroller.scrollHeight;
+					}, 300);
 				}, i * 500);
 			});
 		},
 		getMessage: function getMessage() {},
-		sendMessage: function sendMessage() {}
+		sendMessage: function sendMessage() {},
+		clickSend: function clickSend() {
+			this.datas.push([new Date().getTime() % 2, new Date().getTime(), "2018-09-06 08:01:53", 1, 100]);
+			window.setTimeout(function () {
+				var scroller = document.getElementById("dialog_scroll_root");
+				scroller.scrollTop = scroller.scrollHeight;
+			}, 300);
+		}
 	},
 	components: {
 		rv: _reciever_view2.default,
@@ -1383,12 +1404,12 @@ exports.default = {
 		//				template: '<div>这是子组件2<div>'
 		//			}
 	}
+
+	//	window.setTimeout(function() {
+	//		window._loadMessage()
+	//	}, 2000);
+
 };
-
-
-window.setTimeout(function () {
-	window._loadMessage();
-}, 2000);
 
 /***/ }),
 
@@ -1455,10 +1476,13 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
+//
 
 //接收消息的组件
 exports.default = {
-	props: ["_item"],
+	props: ["_item", "_from"],
 	mounted: function mounted() {
 		var span0 = document.getElementById("span_rv_0_" + this._item[4]);
 		span0.style.paddingBottom = "10px";
@@ -1487,6 +1511,7 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
+//
 //
 //
 //
@@ -1773,7 +1798,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "\n#app {\n\tfont-family: 'Avenir', Helvetica, Arial, sans-serif;\n\t-webkit-font-smoothing: antialiased;\n\t-moz-osx-font-smoothing: grayscale;\n\t/*background-color: #Fc3e50;*/\n\tmargin-top: 0px;\n\theight: 100%;\n\twidth: 100%;\n}\n* {\n\tmargin: 0px;\n\tpadding: 0px;\n}\na {\n\ttext-decoration: none;\n\tcolor: #333;\n}\n.main_link {\n\ttext-decoration: none;\n\tcolor: #fff;\n}\n.app-v_center {\n\t/*设置这个div自己居中*/\n\twidth: 50%;\n\theight: 50%;\n\toverflow: auto;\n\tmargin: auto;\n\tposition: relative;\n\ttop: 25%;\n\tleft: 0;\n\tbottom: 0;\n\tright: 0;\n\t/*设置div的文本居中*/\n\tline-height: 225%;\n\ttext-align: center;\n\t/*其他设置*/\n\tfont-size: 1.1em;\n\tcolor: white;\n}\n.app-div-text-v-center {\n\t/*设置div的文本居中*/\n\tline-height: 225%;\n\t//text-align: center;\n\t/*其他设置*/\n\tfont-size: 1.1em;\n\tcolor: white;\n}\n.max_1_length_hide {\n\ttext-overflow: ellipsis;\n\tword-break: keep-all;\n\toverflow: hidden;\n\twhite-space: nowrap;\n\tdisplay: block;\n}\n.noullistyle {\n\tlist-style: none;\n}\n.main_body {\n\tdisplay: block;\n\tposition: relative;\n\twidth: 100%;\n\theight: 100%;\n\tmin-height: 100%;\n}\n.main_container_parent {\n\tposition: fixed;\n\tdisplay: block;\n\tbottom: 14%;\n\twidth: 100%;\n\tmin-height: 86%;\n}\n.main_container {\n\tposition: absolute;\n\toverflow-y: scroll;\n}\n.main_footer {\n\tposition: fixed;\n\tdisplay: block;\n\tleft: 0;\n\tbottom: 0;\n\twidth: 100%;\n\theight: 14%;\n\tz-index: 9999;\n}\n", ""]);
+exports.push([module.i, "\n#app {\n\tfont-family: 'Avenir', Helvetica, Arial, sans-serif;\n\t-webkit-font-smoothing: antialiased;\n\t-moz-osx-font-smoothing: grayscale;\n\t/*background-color: #Fc3e50;*/\n\tmargin-top: 0px;\n\theight: 100%;\n\twidth: 100%;\n}\n* {\n\tmargin: 0px;\n\tpadding: 0px;\n}\na {\n\ttext-decoration: none;\n\tcolor: #333;\n}\n.main_link {\n\ttext-decoration: none;\n\tcolor: #fff;\n}\n.app-v_center {\n\t/*设置这个div自己居中*/\n\twidth: 50%;\n\theight: 50%;\n\toverflow: auto;\n\tmargin: auto;\n\tposition: relative;\n\ttop: 25%;\n\tleft: 0;\n\tbottom: 0;\n\tright: 0;\n\t/*设置div的文本居中*/\n\tline-height: 225%;\n\ttext-align: center;\n\t/*其他设置*/\n\tfont-size: 1.1em;\n\tcolor: white;\n}\n.app-div-text-v-center {\n\t/*设置div的文本居中*/\n\tline-height: 225%;\n\t//text-align: center;\n\t/*其他设置*/\n\tfont-size: 1.1em;\n\tcolor: white;\n}\n\n/*div只显示一行*/\n.max_1_length_hide {\n\ttext-overflow: ellipsis;\n\tword-break: keep-all;\n\toverflow: hidden;\n\twhite-space: nowrap;\n\tdisplay: block;\n}\n.noullistyle {\n\tlist-style: none;\n}\n/*start-这一整套是为了建立一个content+footer的结构*/\n.main_body {\n\tdisplay: block;\n\tposition: relative;\n\twidth: 100%;\n\theight: 100%;\n\tmin-height: 100%;\n}\n.main_container_parent {\n\tposition: fixed;\n\tdisplay: block;\n\tbottom: 14%;\n\twidth: 100%;\n\tmin-height: 86%;\n}\n.main_container {\n\tposition: absolute;\n\toverflow-y: scroll;\n}\n.main_footer {\n\tposition: fixed;\n\tdisplay: block;\n\tleft: 0;\n\tbottom: 0;\n\twidth: 100%;\n\theight: 14%;\n\tz-index: 9999;\n}\n/*end-这一整套是为了建立一个content+footer的结构*/\n\n/*下面这个css是为了让div刚和内容一样大*/\n.div_min_fit_content {\n\twidth: -moz-fill-available;\n\twidth: -moz-available;\n\t/* FireFox目前这个生效 */\n\twidth: fill-available;\n\twidth: -webkit-fill-available;\n\twidth: -webkit-fit-content;\n\twidth: -webkit-min-content;\n}\n", ""]);
 
 // exports
 exports.locals = {
@@ -1786,7 +1811,8 @@ exports.locals = {
 	"main_body": "main_body",
 	"main_container_parent": "main_container_parent",
 	"main_container": "main_container",
-	"main_footer": "main_footer"
+	"main_footer": "main_footer",
+	"div_min_fit_content": "div_min_fit_content"
 };
 
 /***/ }),
@@ -1867,7 +1893,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -1907,10 +1933,12 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.reciever_view_show_txt_c {\n\tfloat: left;\n\tdisplay: block;\n\twidth: 60%;\n\t/*max-width: 90%;*/\n\theight: 100%;\n}\n\n\n", ""]);
 
 // exports
-
+exports.locals = {
+	"reciever_view_show_txt_c": "reciever_view_show_txt_c"
+};
 
 /***/ }),
 
@@ -13259,133 +13287,141 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "main_body", attrs: { id: "app" } }, [
-    _c(
-      "div",
-      { staticClass: "main_container_parent" },
-      [
-        _c(
-          "keep-alive",
-          [
-            _vm.$route.meta.keepAlive
-              ? _c("router-view", {
-                  staticClass: "main_container",
-                  staticStyle: { "background-color": "aliceblue" }
-                })
-              : _vm._e()
-          ],
-          1
-        ),
-        _vm._v(" "),
-        !_vm.$route.meta.keep_alive
-          ? _c("router-view", {
-              staticClass: "main_container",
-              staticStyle: { "background-color": "aliceblue" }
-            })
-          : _vm._e()
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass: "main_footer",
-        staticStyle: { "background-color": "dodgerblue" }
-      },
-      [
-        _c(
-          "div",
-          {
-            staticStyle: {
-              "font-size": "1.2rem",
-              width: "33.3%",
-              height: "100%",
-              display: "inline-block",
-              float: "left"
-            }
-          },
-          [
-            _c(
-              "div",
-              {
-                staticClass: "app-v_center",
-                staticStyle: { "overflow-y": "hidden" }
-              },
-              [
-                _c(
-                  "router-link",
-                  { staticClass: "main_link", attrs: { to: "/" } },
-                  [_vm._v("\n\t\t\t\t\t对话")]
-                )
-              ],
-              1
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticStyle: {
-              "font-size": "1.2rem",
-              width: "33.3%",
-              height: "100%",
-              display: "inline-block",
-              float: "left"
-            }
-          },
-          [
-            _c(
-              "div",
-              {
-                staticClass: "app-v_center",
-                staticStyle: { "overflow-y": "hidden" }
-              },
-              [
-                _c(
-                  "router-link",
-                  { staticClass: "main_link", attrs: { to: "/h" } },
-                  [_vm._v("\n\t\t\t\t\t联系人")]
-                )
-              ],
-              1
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticStyle: {
-              "font-size": "1.2rem",
-              width: "33.3%",
-              height: "100%",
-              display: "inline-block",
-              float: "left"
-            }
-          },
-          [
-            _c(
-              "div",
-              {
-                staticClass: "app-v_center",
-                staticStyle: { "overflow-y": "hidden" }
-              },
-              [
-                _c(
-                  "router-link",
-                  { staticClass: "main_link", attrs: { to: "/b" } },
-                  [_vm._v("\n\t\t\t\t\t其他")]
-                )
-              ],
-              1
-            )
-          ]
-        )
-      ]
-    )
-  ])
+  return _c(
+    "div",
+    {
+      staticClass: "main_body",
+      staticStyle: { overflow: "hidden" },
+      attrs: { id: "app" }
+    },
+    [
+      _c(
+        "div",
+        { staticClass: "main_container_parent" },
+        [
+          _c(
+            "keep-alive",
+            [
+              _vm.$route.meta.keepAlive
+                ? _c("router-view", {
+                    staticClass: "main_container",
+                    staticStyle: { "background-color": "aliceblue" }
+                  })
+                : _vm._e()
+            ],
+            1
+          ),
+          _vm._v(" "),
+          !_vm.$route.meta.keep_alive
+            ? _c("router-view", {
+                staticClass: "main_container",
+                staticStyle: { "background-color": "aliceblue" }
+              })
+            : _vm._e()
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "main_footer",
+          staticStyle: { "background-color": "dodgerblue" }
+        },
+        [
+          _c(
+            "div",
+            {
+              staticStyle: {
+                "font-size": "1.2rem",
+                width: "33.3%",
+                height: "100%",
+                display: "inline-block",
+                float: "left"
+              }
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass: "app-v_center",
+                  staticStyle: { "overflow-y": "hidden" }
+                },
+                [
+                  _c(
+                    "router-link",
+                    { staticClass: "main_link", attrs: { to: "/" } },
+                    [_vm._v("\n\t\t\t\t\t对话")]
+                  )
+                ],
+                1
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticStyle: {
+                "font-size": "1.2rem",
+                width: "33.3%",
+                height: "100%",
+                display: "inline-block",
+                float: "left"
+              }
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass: "app-v_center",
+                  staticStyle: { "overflow-y": "hidden" }
+                },
+                [
+                  _c(
+                    "router-link",
+                    { staticClass: "main_link", attrs: { to: "/h" } },
+                    [_vm._v("\n\t\t\t\t\t联系人")]
+                  )
+                ],
+                1
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticStyle: {
+                "font-size": "1.2rem",
+                width: "33.3%",
+                height: "100%",
+                display: "inline-block",
+                float: "left"
+              }
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass: "app-v_center",
+                  staticStyle: { "overflow-y": "hidden" }
+                },
+                [
+                  _c(
+                    "router-link",
+                    { staticClass: "main_link", attrs: { to: "/b" } },
+                    [_vm._v("\n\t\t\t\t\t其他")]
+                  )
+                ],
+                1
+              )
+            ]
+          )
+        ]
+      )
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -13648,57 +13684,126 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      _c("div", { staticStyle: { width: "100%", height: "100%" } }, [
-        _c(
-          "div",
-          { staticStyle: { width: "100%", height: "100%" } },
-          _vm._l(_vm.datas, function(item) {
-            return _c(
-              "div",
-              {
-                staticStyle: {
-                  overflow: "auto",
-                  "list-style": "none",
-                  width: "100%",
-                  "min-height": "1%",
-                  height: "auto"
-                }
+      _c(
+        "div",
+        {
+          staticStyle: {
+            width: "100%",
+            height: "80%",
+            top: "10%",
+            position: "absolute",
+            overflow: "overlay"
+          },
+          attrs: { id: "dialog_scroll_root" }
+        },
+        [
+          _c(
+            "div",
+            { staticStyle: { width: "100%", height: "100%" } },
+            _vm._l(_vm.datas, function(item) {
+              return _c(
+                "div",
+                {
+                  staticStyle: {
+                    overflow: "auto",
+                    "list-style": "none",
+                    width: "100%",
+                    "min-height": "1%",
+                    height: "auto"
+                  }
+                },
+                [
+                  item[0] == 0
+                    ? _c(
+                        "div",
+                        {
+                          staticStyle: {
+                            width: "100%",
+                            "min-height": "1rem",
+                            height: "auto"
+                          }
+                        },
+                        [
+                          _c("rv", {
+                            attrs: {
+                              _item: item,
+                              _from: _vm.$route.params.name
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  item[0] == 1
+                    ? _c(
+                        "div",
+                        {
+                          staticStyle: {
+                            width: "100%",
+                            "min-height": "1rem",
+                            height: "auto"
+                          }
+                        },
+                        [_c("sv", { attrs: { _item: item } })],
+                        1
+                      )
+                    : _vm._e()
+                ]
+              )
+            })
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticStyle: {
+            "background-color": "#0000",
+            "margin-left": "2.5%",
+            overflow: "hidden",
+            "z-index": "1999",
+            position: "fixed",
+            bottom: "15%",
+            height: "8.5%",
+            width: "95%"
+          }
+        },
+        [
+          _c("input", {
+            staticStyle: {
+              left: "2.5%",
+              width: "74%",
+              height: "99%",
+              float: "left",
+              display: "inline-block"
+            },
+            attrs: { type: "text" }
+          }),
+          _vm._v(" "),
+          _c(
+            "mt-button",
+            {
+              staticStyle: {
+                width: "24%",
+                height: "100%",
+                float: "right",
+                display: "inline-block",
+                "font-size": "1rem"
               },
-              [
-                item[0] == 0
-                  ? _c(
-                      "div",
-                      {
-                        staticStyle: {
-                          width: "100%",
-                          "min-height": "1rem",
-                          height: "auto"
-                        }
-                      },
-                      [_c("rv", { attrs: { _item: item } })],
-                      1
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                item[0] == 1
-                  ? _c(
-                      "div",
-                      {
-                        staticStyle: {
-                          width: "100%",
-                          "min-height": "1rem",
-                          height: "auto"
-                        }
-                      },
-                      [_c("sv", { attrs: { _item: item } })],
-                      1
-                    )
-                  : _vm._e()
-              ]
-            )
-          })
-        )
-      ])
+              attrs: { type: "primary" },
+              on: {
+                click: function($event) {
+                  _vm.clickSend()
+                }
+              }
+            },
+            [_vm._v("发送")]
+          )
+        ],
+        1
+      )
     ]
   )
 }
@@ -13766,18 +13871,35 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticStyle: { width: "100%", height: "auto" } }, [
     _c(
-      "span",
+      "div",
       {
-        staticStyle: {
-          float: "left",
-          display: "inline-block",
-          width: "60%",
-          height: "100%",
-          "background-color": "gold"
-        },
+        staticClass: "reciever_view_show_txt_c",
         attrs: { id: "span_rv_0_" + _vm.item[4] }
       },
-      [_vm._v("\n\t\t\t" + _vm._s(_vm.item[1]) + "\n\t")]
+      [
+        _vm._v("\n\t\t  "),
+        _c(
+          "span",
+          { staticStyle: { color: "#555555aa", "font-size": "0.8rem" } },
+          [_vm._v(_vm._s(_vm._from) + ":")]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "div_min_fit_content",
+            staticStyle: {
+              color: "#335588",
+              "padding-top": "0.5rem",
+              "padding-bottom": "0.5rem",
+              "margin-left": "2rem",
+              "font-size": "1.15rem",
+              "background-color": "#FFE4C4"
+            }
+          },
+          [_vm._v(_vm._s(_vm.item[1]))]
+        )
+      ]
     ),
     _vm._v(" "),
     _c(
@@ -13786,9 +13908,9 @@ var render = function() {
         staticStyle: {
           float: "left",
           display: "inline-block",
-          width: "40%",
-          height: "100%",
-          "background-color": "#FFE4C4"
+          "max-width": "40%",
+          "min-width": "20%",
+          height: "100%"
         },
         attrs: { id: "span_rv_1_" + _vm.item[4] }
       },
@@ -13826,8 +13948,7 @@ var render = function() {
           float: "left",
           display: "inline-block",
           width: "40%",
-          height: "100%",
-          "background-color": "#FFE4C4"
+          height: "100%"
         },
         attrs: { id: "span_sv_0_" + _vm.item[4] }
       },
@@ -13841,14 +13962,39 @@ var render = function() {
           float: "left",
           display: "inline-block",
           width: "60%",
-          height: "100%",
-          "background-color": "gold"
+          height: "100%"
         },
         attrs: { id: "span_sv_1_" + _vm.item[4] }
       },
       [
         _c("span", { staticStyle: { float: "right" } }, [
-          _vm._v("\n\t\t\t" + _vm._s(_vm.item[1]) + "\n\t\t\t")
+          _c(
+            "div",
+            {
+              staticClass: "div_min_fit_content",
+              staticStyle: {
+                color: "#efefef",
+                "padding-top": "0.5rem",
+                "padding-bottom": "0.5rem",
+                "background-color": "darkseagreen",
+                "font-size": "1.15rem",
+                "margin-right": "2rem"
+              }
+            },
+            [_vm._v(_vm._s(_vm.item[1]))]
+          ),
+          _vm._v(" "),
+          _c(
+            "span",
+            {
+              staticStyle: {
+                float: "right",
+                color: "#555555aa",
+                "font-size": "0.8rem"
+              }
+            },
+            [_vm._v(":我  ")]
+          )
         ])
       ]
     )

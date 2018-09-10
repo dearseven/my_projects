@@ -1,5 +1,5 @@
 <template>
-	<div id="app" class="main_body" style="">
+	<div id="app" class="main_body" style="overflow: hidden">
 		<!--  <img src="../../img/r_4.png">-->
 		<div class="main_container_parent">
 			<!--这样配置以后需要缓存的就会在keep-alive中渲染然后缓存,而不需要的就会在外面渲染,不会缓存-->
@@ -92,6 +92,7 @@
 		color: white;
 	}
 	
+	/*div只显示一行*/
 	.max_1_length_hide {
 		text-overflow: ellipsis;
 		word-break: keep-all;
@@ -103,6 +104,7 @@
 	.noullistyle {
 		list-style: none;
 	}
+	/*start-这一整套是为了建立一个content+footer的结构*/
 	
 	.main_body {
 		display: block;
@@ -133,5 +135,17 @@
 		width: 100%;
 		height: 14%;
 		z-index: 9999;
+	}
+	/*end-这一整套是为了建立一个content+footer的结构*/
+	
+	/*下面这个css是为了让div刚和内容一样大*/
+	.div_min_fit_content {
+		width: -moz-fill-available;
+		width: -moz-available;
+		/* FireFox目前这个生效 */
+		width: fill-available;
+		width: -webkit-fill-available;
+		width: -webkit-fit-content;
+		width: -webkit-min-content;
 	}
 </style>
