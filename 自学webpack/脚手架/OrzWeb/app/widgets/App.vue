@@ -18,7 +18,7 @@
 			</div>
 			<div style="font-size:  0.8rem;width: 33.3%;height: 100%;display: inline-block;float: left;">
 				<div class="app-v_center" style="overflow-y: hidden;">
-					<router-link to="/h" class="main_link">
+					<router-link to="/peoples" class="main_link">
 						联系人</router-link>
 				</div>
 			</div>

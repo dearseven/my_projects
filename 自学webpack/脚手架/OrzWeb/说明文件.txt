@@ -95,3 +95,14 @@ https://segmentfault.com/a/1190000012083511
 		width: -webkit-fit-content;
 		width: -webkit-min-content;
 	}
+	
+19 Html显示图片时，超过规定尺寸大小，则同比缩放图片显示，保持页面不变形的方法：
+	.L_center_img img{
+		 max-height:145px;
+		 max-width: 120px; 
+		 vertical-align:middle;
+	 }	
+
+
+20 编程式路由+双循环生成组件
+peoples.vue
