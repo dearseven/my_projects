@@ -1,4 +1,4 @@
-通过launcher.html进入
+﻿通过launcher.html进入
 
 1 vue(没有vue-cli,用了vue-router)+webpack+mint-ui
 
@@ -106,3 +106,19 @@ https://segmentfault.com/a/1190000012083511
 
 20 编程式路由+双循环生成组件
 peoples.vue
+
+21 CSS中父div与子div——子div有内容，父div高度却为0？
+ 当一个元素只包含浮动元素的时候，它会出现高度折叠(在火狐中是这样，IE9不会),即元素的上下底边重合，和高度为0效果一样。
+所以是子元素设置了 float属性的缘故
+关于解决这种现象的方法：
+
+1 给包含元素设置高度height 
+
+2 利用overflow属性 
+
+3 添加一个空的div 
+
+4 利用伪元素:after 
+
+22 display:flex可以轻易实现各种居中效果
+me.vue

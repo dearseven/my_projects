@@ -24,8 +24,8 @@
 			</div>
 			<div style="font-size:  0.8rem;width: 33.3%;height: 100%;display: inline-block;float: left;">
 				<div class="app-v_center" style="overflow-y: hidden;">
-					<router-link to="/b" class="main_link">
-						其他</router-link>
+					<router-link to="/me" class="main_link">
+						我</router-link>
 				</div>
 			</div>
 		</div>

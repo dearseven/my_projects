@@ -11,6 +11,7 @@ import banner from '../widgets/banner.vue'
 import chatlist from '../widgets/chatlist.vue'
 import dialog from '../widgets/dialog.vue'
 import peoples from '../widgets/peoples.vue'
+import me from '../widgets/me.vue'
 
 //
 //import send_view from '../widgets/send_view.vue'
@@ -43,11 +44,11 @@ const router = new Router({
 			}
 		},
 		{
-			path: '/b',
-			name: 'banner',
-			component: banner,
+			path: '/me',
+			name: 'me',
+			component: me,
 			meta: {
-				keepAlive: false // 不需要缓存
+				keepAlive: true // 需要缓存
 			}
 		}
 	]
