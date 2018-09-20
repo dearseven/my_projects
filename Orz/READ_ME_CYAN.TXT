@@ -25,4 +25,10 @@ MyWrapAdapter负责添加头和尾,因为MyRecyclerView重写了setAdapter实际
                 }
 
             })
+四:相册什么的,有一个练习项目交CyanAlbum
+    在这个项目里用了知乎的matisse
+	lib module phototaker就是示例
+注意openMatisse有一些有用的注释,
+还有通过URI显示和取物理路径的方法也有在MainActivity中
+
 

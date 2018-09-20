@@ -22,6 +22,7 @@ import chat.sh.orz.cyan.recyclerlist.slide.SimpleItemTouchHelperCallback
 import java.util.*
 import android.widget.Toast
 import android.app.ListActivity
+import android.content.Intent
 import android.view.View
 import android.widget.TextView
 
@@ -134,6 +135,7 @@ class FunctionActivity : AppCompatActivity() {
             holder.itemView.findViewById<TextView>(R.id.show).setOnClickListener(object : View.OnClickListener {
                 override fun onClick(view: View) {
                     Toast.makeText(this@FunctionActivity, "编号：$position", Toast.LENGTH_LONG).show()
+                    startActivity(Intent(this@FunctionActivity, data.c))
                 }
             })
             //---这个是滑动出现的删除按钮的点击事件

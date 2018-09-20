@@ -12,7 +12,7 @@ android {
     defaultConfig {
         applicationId "chat.sh.orz.cyan.orz"
         minSdkVersion 14
-        targetSdkVersion 26
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -68,9 +68,7 @@ dependencies {
     //    compile 'io.reactivex:rxandroid:1.2.0'
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
     implementation 'io.reactivex.rxjava2:rxjava:2.0.1'
-    implementation 'com.github.bumptech.glide:glide:4.7.1'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
-    kapt 'com.github.bumptech.glide:compiler:4.7.1'
+
 
     implementation project(':phototaker')
     implementation project(':recyclerlist')
