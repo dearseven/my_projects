@@ -25,6 +25,7 @@ import android.app.ListActivity
 import android.content.Intent
 import android.view.View
 import android.widget.TextView
+import chat.sh.orz.cyan.appinstall.InstallMain
 
 
 class FunctionActivity : AppCompatActivity() {
@@ -42,7 +43,7 @@ class FunctionActivity : AppCompatActivity() {
         //setContentView(R.layout.activity_function)
         //初始化一些数据
         funcList.add(FunctionViewModel("图片选取or拍照1", MainActivity::class.java))
-        funcList.add(FunctionViewModel("图片选取or拍照2", MainActivity::class.java))
+        funcList.add(FunctionViewModel("安装未知来源APP", InstallMain::class.java))
         funcList.add(FunctionViewModel("图片选取or拍照3", MainActivity::class.java))
         funcList.add(FunctionViewModel("图片选取or拍照4", MainActivity::class.java))
         funcList.add(FunctionViewModel("图片选取or拍照5", MainActivity::class.java))

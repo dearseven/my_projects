@@ -1,1 +1,1 @@
-include ':app', ':phototaker', ':recyclerlist'
+include ':app', ':phototaker', ':recyclerlist', ':appinstall', ':runbackrun'

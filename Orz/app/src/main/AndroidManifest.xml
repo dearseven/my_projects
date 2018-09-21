@@ -3,6 +3,11 @@
     package="chat.sh.orz.cyan.orz">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <!--android O(8)安装未知应用权限-->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -30,6 +35,7 @@
             </intent-filter>
         </activity>
 
+        <!-- 注意authorities的包名~~~!!!-->
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="chat.sh.orz.cyan.orz.file.provider"

@@ -30,5 +30,12 @@ MyWrapAdapter负责添加头和尾,因为MyRecyclerView重写了setAdapter实际
 	lib module phototaker就是示例
 注意openMatisse有一些有用的注释,
 还有通过URI显示和取物理路径的方法也有在MainActivity中
+针对N(7)以上需要FileProvider
+在清单文件中定义
 
-
+五:安装应用
+1 针对N(7)以上需要FileProvider
+    同四~
+2 针对O(8)需要申请未知应用安装权限
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+3

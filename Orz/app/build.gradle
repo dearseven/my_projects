@@ -72,4 +72,5 @@ dependencies {
 
     implementation project(':phototaker')
     implementation project(':recyclerlist')
+    implementation project(':appinstall')
 }
