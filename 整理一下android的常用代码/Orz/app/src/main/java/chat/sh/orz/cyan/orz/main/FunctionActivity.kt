@@ -26,6 +26,8 @@ import android.content.Intent
 import android.view.View
 import android.widget.TextView
 import chat.sh.orz.cyan.appinstall.InstallMain
+import chat.sh.orz.cyan.runbackrun.RunbackMainActivity
+import chat.sh.orz.cyan.runbackrun.WorkManagerMainActivity
 
 
 class FunctionActivity : AppCompatActivity() {
@@ -44,8 +46,8 @@ class FunctionActivity : AppCompatActivity() {
         //初始化一些数据
         funcList.add(FunctionViewModel("图片选取or拍照1", MainActivity::class.java))
         funcList.add(FunctionViewModel("安装未知来源APP", InstallMain::class.java))
-        funcList.add(FunctionViewModel("图片选取or拍照3", MainActivity::class.java))
-        funcList.add(FunctionViewModel("图片选取or拍照4", MainActivity::class.java))
+        funcList.add(FunctionViewModel("JobService后台", RunbackMainActivity::class.java))
+        funcList.add(FunctionViewModel("WorkManager后台", WorkManagerMainActivity::class.java))
         funcList.add(FunctionViewModel("图片选取or拍照5", MainActivity::class.java))
         funcList.add(FunctionViewModel("图片选取or拍照6", MainActivity::class.java))
         funcList.add(FunctionViewModel("图片选取or拍照7", MainActivity::class.java))
