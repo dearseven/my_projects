@@ -37,9 +37,9 @@ public class WorkManagerMainActivity extends AppCompatActivity {
                 .setRequiresBatteryNotLow(true)                 // 不在电量不足时执行
                 .setRequiresCharging(true)                      // 在充电时执行
                 .setRequiresStorageNotLow(true);                // 不在存储容量不足时执行
-        // 在待机状态下执行，需要 min API>= 23
+        // 只在待机状态下执行，需要 min API>= 23,所以要置为false啦
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            builder.setRequiresDeviceIdle(true);
+            builder.setRequiresDeviceIdle(false);
         }
         Constraints constraints = builder.build();
         //2.传入参数

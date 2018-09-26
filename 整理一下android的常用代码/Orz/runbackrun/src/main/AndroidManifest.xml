@@ -15,7 +15,14 @@
             android:permission="android.permission.BIND_JOB_SERVICE" />
 
         <activity android:name=".RunbackMainActivity" />
-        <activity android:name=".WorkManagerMainActivity"></activity>
+        <activity android:name=".WorkManagerMainActivity" />
+
+        <service
+            android:name=".frontservice.CFrontService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".FrontServiceActivity"></activity>
     </application>
 
 </manifest>
