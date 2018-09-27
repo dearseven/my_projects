@@ -76,4 +76,5 @@ dependencies {
     implementation project(':recyclerlist')
     implementation project(':appinstall')
     implementation project(':runbackrun')
+    implementation project(':constraintlayout')
 }
