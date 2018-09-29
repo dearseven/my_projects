@@ -77,4 +77,6 @@ dependencies {
     implementation project(':appinstall')
     implementation project(':runbackrun')
     implementation project(':constraintlayout')
+    implementation project(':drawsome')
+
 }
