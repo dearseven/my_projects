@@ -78,5 +78,6 @@ dependencies {
     implementation project(':runbackrun')
     implementation project(':constraintlayout')
     implementation project(':drawsome')
+    implementation project(':m_permission')
 
 }

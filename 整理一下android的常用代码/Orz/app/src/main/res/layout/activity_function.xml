@@ -1,25 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
-
     </data>
 
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".main.FunctionActivity">
+        android:background="#fff"
+        android:orientation="vertical">
+
 
         <!--<android.support.v7.widget.RecyclerView-->
-            <!--android:id="@+id/funRv"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>-->
-     <chat.sh.orz.cyan.recyclerlist.MyRecyclerView
-         android:id="@+id/funRv"
-         android:layout_width="match_parent"
-         android:layout_height="match_parent"></chat.sh.orz.cyan.recyclerlist.MyRecyclerView>
-    </FrameLayout>
+        <!--android:id="@+id/funRv"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>-->
+        <chat.sh.orz.cyan.recyclerlist.MyRecyclerView
+            android:id="@+id/funRv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></chat.sh.orz.cyan.recyclerlist.MyRecyclerView>
+    </LinearLayout>
 </layout>

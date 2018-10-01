@@ -1,1 +1,1 @@
-include ':app', ':phototaker', ':recyclerlist', ':appinstall', ':runbackrun', ':constraintlayout', ':drawsome'
+include ':app', ':phototaker', ':recyclerlist', ':appinstall', ':runbackrun', ':constraintlayout', ':drawsome', ':m_permission'

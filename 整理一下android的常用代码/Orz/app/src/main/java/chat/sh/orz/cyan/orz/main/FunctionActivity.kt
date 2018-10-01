@@ -28,6 +28,7 @@ import android.widget.TextView
 import chat.sh.orz.cyan.appinstall.InstallMain
 import chat.sh.orz.cyan.constraintlayout.constraint1
 import chat.sh.orz.cyan.drawsome.DrawSomeActivity
+import chat.sh.orz.cyan.m_permission.MPermissionActivity
 import chat.sh.orz.cyan.runbackrun.FrontServiceActivity
 import chat.sh.orz.cyan.runbackrun.RunbackMainActivity
 import chat.sh.orz.cyan.runbackrun.WorkManagerMainActivity
@@ -54,7 +55,7 @@ class FunctionActivity : AppCompatActivity() {
         funcList.add(FunctionViewModel("前台服务", FrontServiceActivity::class.java))
         funcList.add(FunctionViewModel("constrait1", constraint1::class.java))
         funcList.add(FunctionViewModel("drawsome", DrawSomeActivity::class.java))
-        funcList.add(FunctionViewModel("NONE", FunctionActivity::class.java))
+        funcList.add(FunctionViewModel("M Permission", MPermissionActivity::class.java))
         funcList.add(FunctionViewModel("NONE", FunctionActivity::class.java))
         funcList.add(FunctionViewModel("NONE", FunctionActivity::class.java))
         funcList.add(FunctionViewModel("NONE", FunctionActivity::class.java))
