@@ -44,6 +44,7 @@ class FunctionActivity : AppCompatActivity() {
     var binding: ActivityFunctionBinding? = null;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+		LayoutSizeInfoTeller.show(this@FunctionActivity)
         //获取绑定
         binding = DataBindingUtil.setContentView<ActivityFunctionBinding>(this, R.layout.activity_function)
         //setContentView(R.layout.activity_function)
