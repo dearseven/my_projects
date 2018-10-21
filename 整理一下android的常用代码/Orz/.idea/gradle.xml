@@ -13,9 +13,11 @@
             <option value="$PROJECT_DIR$/constraintlayout" />
             <option value="$PROJECT_DIR$/drawsome" />
             <option value="$PROJECT_DIR$/m_permission" />
+            <option value="$PROJECT_DIR$/mvvm" />
             <option value="$PROJECT_DIR$/phototaker" />
             <option value="$PROJECT_DIR$/recyclerlist" />
             <option value="$PROJECT_DIR$/runbackrun" />
+            <option value="$PROJECT_DIR$/wheel" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

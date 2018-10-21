@@ -14,14 +14,12 @@ import kotlinx.android.synthetic.main.activity_function.*
 import chat.sh.orz.cyan.recyclerlist.MyItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.helper.ItemTouchHelper
-import android.util.Log
 import chat.sh.orz.cyan.recyclerlist.MyRecyclerView.MyRecyclerViewListener
 import chat.sh.orz.cyan.recyclerlist.adapter.CItemView
 import chat.sh.orz.cyan.recyclerlist.adapter.CRecyclerListAdapter
 import chat.sh.orz.cyan.recyclerlist.slide.SimpleItemTouchHelperCallback
 import java.util.*
 import android.widget.Toast
-import android.app.ListActivity
 import android.content.Intent
 import android.view.View
 import android.widget.TextView
@@ -29,9 +27,11 @@ import chat.sh.orz.cyan.appinstall.InstallMain
 import chat.sh.orz.cyan.constraintlayout.constraint1
 import chat.sh.orz.cyan.drawsome.DrawSomeActivity
 import chat.sh.orz.cyan.m_permission.MPermissionActivity
+import chat.sh.orz.cyan.mvvm.model.MVVMActivity
 import chat.sh.orz.cyan.runbackrun.FrontServiceActivity
 import chat.sh.orz.cyan.runbackrun.RunbackMainActivity
 import chat.sh.orz.cyan.runbackrun.WorkManagerMainActivity
+import chat.sh.orz.cyan.wheel.WheelMainActivity
 
 
 class FunctionActivity : AppCompatActivity() {
@@ -44,7 +44,7 @@ class FunctionActivity : AppCompatActivity() {
     var binding: ActivityFunctionBinding? = null;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-		LayoutSizeInfoTeller.show(this@FunctionActivity)
+        LayoutSizeInfoTeller.show(this@FunctionActivity)
         //获取绑定
         binding = DataBindingUtil.setContentView<ActivityFunctionBinding>(this, R.layout.activity_function)
         //setContentView(R.layout.activity_function)
@@ -57,8 +57,8 @@ class FunctionActivity : AppCompatActivity() {
         funcList.add(FunctionViewModel("constrait1", constraint1::class.java))
         funcList.add(FunctionViewModel("drawsome", DrawSomeActivity::class.java))
         funcList.add(FunctionViewModel("M Permission", MPermissionActivity::class.java))
-        funcList.add(FunctionViewModel("NONE", FunctionActivity::class.java))
-        funcList.add(FunctionViewModel("NONE", FunctionActivity::class.java))
+        funcList.add(FunctionViewModel("滚轮", WheelMainActivity::class.java))
+        funcList.add(FunctionViewModel("MVVM", MVVMActivity::class.java))
         funcList.add(FunctionViewModel("NONE", FunctionActivity::class.java))
 
         //初始化adapter

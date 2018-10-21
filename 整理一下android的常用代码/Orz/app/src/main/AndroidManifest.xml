@@ -26,6 +26,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <!-- 传统屏幕：ratio_float = 16/9 = 1.778 ；
+     三星S8屏幕：ratio_float = 18.5/9 = 2.056。
+     鉴于目前全面屏屏幕比例，将ratio_float设置为2.1即可适配一众全面屏手机。 -->
+        <meta-data
+            android:name="android.max_aspect"
+            android:value="2.1" />
+
         <activity
             android:name=".DemoActivity"
             android:label="@string/app_name" />

@@ -79,5 +79,6 @@ dependencies {
     implementation project(':constraintlayout')
     implementation project(':drawsome')
     implementation project(':m_permission')
-
+    implementation project(":wheel")
+    implementation project(":mvvm")
 }
