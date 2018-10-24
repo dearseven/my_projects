@@ -31,6 +31,7 @@ import chat.sh.orz.cyan.mvvm.model.MVVMActivity
 import chat.sh.orz.cyan.runbackrun.FrontServiceActivity
 import chat.sh.orz.cyan.runbackrun.RunbackMainActivity
 import chat.sh.orz.cyan.runbackrun.WorkManagerMainActivity
+import chat.sh.orz.cyan.rx_java2.RxJavaActivity
 import chat.sh.orz.cyan.wheel.WheelMainActivity
 
 
@@ -59,7 +60,7 @@ class FunctionActivity : AppCompatActivity() {
         funcList.add(FunctionViewModel("M Permission", MPermissionActivity::class.java))
         funcList.add(FunctionViewModel("滚轮", WheelMainActivity::class.java))
         funcList.add(FunctionViewModel("MVVM", MVVMActivity::class.java))
-        funcList.add(FunctionViewModel("NONE", FunctionActivity::class.java))
+        funcList.add(FunctionViewModel("rx_java2",RxJavaActivity::class.java))
 
         //初始化adapter
         adapter = Adapter()

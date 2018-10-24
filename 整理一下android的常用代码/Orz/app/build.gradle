@@ -81,4 +81,6 @@ dependencies {
     implementation project(':m_permission')
     implementation project(":wheel")
     implementation project(":mvvm")
+    implementation project(":rx_java2")
+
 }
