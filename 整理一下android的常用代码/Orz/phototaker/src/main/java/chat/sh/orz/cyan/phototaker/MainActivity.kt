@@ -64,6 +64,7 @@ class MainActivity : AppCompatActivity() {
     fun openMatisse(): Unit {
         Matisse.from(this@MainActivity)
                 .choose(MimeType.ofAll())//图片类型
+				.theme(R.style.Matisse_Dracula)
                 .countable(true)//true:选中后显示数字;false:选中后显示对号
                 .maxSelectable(1)//可选的最大数
                 .capture(true)//选择照片时，是否显示拍照
