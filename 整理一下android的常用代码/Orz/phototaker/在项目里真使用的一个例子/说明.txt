@@ -1,0 +1,9 @@
+    implementation 'com.zhihu.android:matisse:0.5.2-beta1'
+
+	1 BedFriendV9UserInfoDetailActivity 取名A 
+	  SelectPhotoActivity 取名B
+	  
+	  A的244行处理点击准备启动matisse的使用类B；
+	  B使用完以后返回A的onActivityResult，在521行通过startPhotoZoom来裁剪；
+	  裁剪以后也返回A的onActivityResult在534行通setPicToViewAndUpload 显示图片和上传到服务器
+	  
