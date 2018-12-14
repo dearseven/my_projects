@@ -7,3 +7,5 @@
 	  B使用完以后返回A的onActivityResult，在521行通过startPhotoZoom来裁剪；
 	  裁剪以后也返回A的onActivityResult在534行通setPicToViewAndUpload 显示图片和上传到服务器
 	  
+	  
+	  而且还自己定义了matisse的样式

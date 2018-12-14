@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="no_color">#00000000</color>
+    <color name="black_55_color">#55000000</color>
+    <color name="black_88_color">#88000000</color>
+    <color name="black_AA_color">#AA000000</color>
+    <color name="white_55_color">#55ffffff</color>
+    <color name="close_2_white">#fefefe</color>
+
+
+    <color name="main_wake_time_color">#533D77</color>
+    <color name="main_wake_time_color_alpha0">#DD533D77</color>
+    <color name="main_wake_time_color_alpha1">#88533D77</color>
+    <color name="main_wake_time_color_alpha2">#66533D77</color>
+    <color name="main_wake_time_color_alpha6">#33533D77</color>
+    <color name="main_wake_time_color_alpha7">#11533D77</color>
+    <color name="bg_light_gray4">#77555555</color>
+    <color name="bg_light_gray5">#55555555</color>
+    <color name="bg_light_gray6">#33555555</color>
+    <color name="bg_light_gray7">#11555555</color>
+    <color name="text_pink">#FF8172</color>
+    <color name="text_pink2">#FF6152</color>
+    <color name="text_gray_white">#cfcfcf</color>
+    <color name="text_gray_white2">#bfbfbf</color>
+    <color name="forcering_selected_bg">#6f6887</color>
+</resources>
