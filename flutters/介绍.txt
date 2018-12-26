@@ -1,0 +1,60 @@
+安装
+我是在https://flutterchina.club/看的资料
+1 下载 flutter SDK,注意放置的目录不要有空格,中文等
+2  配置环境
+转到 “控制面板>用户帐户>用户帐户>更改我的环境变量”
+在“用户变量”下检查是否有名为“Path”的条目:
+如果该条目存在, 追加 flutter\bin的全路径，使用 ; 作为分隔符.
+如果条目不存在, 创建一个新用户变量 Path ，然后将 flutter\bin的全路径作为它的值.
+在“用户变量”下检查是否有名为”PUB_HOSTED_URL”和”FLUTTER_STORAGE_BASE_URL”的条目，如果没有，也添加它们。
+他们的值分别是
+PUB_HOSTED_URL=https://pub.flutter-io.cn
+FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
+3
+启动Android Studio.
+打开插件首选项 (Preferences>Plugins on macOS, File>Settings>Plugins on Windows & Linux).
+选择 Browse repositories…, 选择 Flutter 插件并点击 install.
+重启Android Studio后插件生效.
+4 验证安装
+可以在window cmd(win10 powershell)运行 flutter doctor 来验证安装
+
+
+项目 flutter_app1
+一个最基础的flutter环境的代码 进去就可以按钮
+要注意的是创建好项目以后,打开项目名/android/build.gradle 添加阿里云的镜像
+buildscript {
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.2.1'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
+    }
+}
+
+rootProject.buildDir = '../build'
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+subprojects {
+    project.evaluationDependsOn(':app')
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
