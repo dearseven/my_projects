@@ -1,0 +1,2 @@
+*****这个和fordagger中的配合哈~没用到present3inject包中的东西***
+简单的说就是通过fordagger包中的几个东西来自动注入到InstancePropertyActivity

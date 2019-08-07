@@ -1,0 +1,37 @@
+//解释fordagger包中的四个类
+*****这个和InstanceProperties中的配合哈~没用到present3inject包中的东西***
+CookModules
+CookModule很简单，它的目的就是通过@Providers注解提供Menu对象需要的数据。
+因为Menu是需要依赖一个Map对象的，所以我们通过CookModules给它构造一个Map对象，并自动把它注入到Menu实例里面。
+
+ActivityModules
+ActivityModules的主要作用就是通过@ContributesAndroidInjector来标记哪个类需要使用依赖注入功能，
+这里标记的是InstancePropertyActivity，所以InstancePropertyActivity能通过@Inject注解来注入Chef对象。
+
+CookAppComponent
+CookAppComponent相当于一个注射器，我们前面定义的Modules就是被注射的类，
+使用@Inject注入对象的地方就是接收者类。
+
+MyApplication
+MyAppliction的特点是继承了DaggerAppliction类，
+并且在applicationInjector方法中构建了一个DaggerCookAppComponent注射器。
+记得要去注册哦，在清单文件
+android:name=".more.fordagger.MyApplication"
+--------------------
+这就是Dagger 2在Android中的使用方案了，在这里我们可以看到，
+接收这类（InstancePropertyActivity）中的代码非常简单，实现依赖注入只使用了：
+@Inject
+Chef chef;
+
+在接收类里面完全没有多余的代码，如果我们要拓展可以SecondsActivity的话，在SecondsActivity我们要用到Menu类。
+那么我们只需要在ActivityModules中增加：
+@ContributesAndroidInjector
+abstract SecondsActivity contributeSecondsActivity();
+
+然后在SecondsActivity注入Menu：
+@Inject
+Menu menu;
+
+可以看到，对于整个工程来说，实现使用Dagger2 For Android实现依赖注入要写的模版代码其实非常少，
+非常简洁。只需要进行一次配置就可以，不需要频繁写一堆模版代码。
+总的来说，Dagger2造成模版代码增加这个问题已经解决了。

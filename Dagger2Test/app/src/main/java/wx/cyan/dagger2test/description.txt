@@ -1,0 +1,42 @@
+简单dagger2--这是一个类似MVP结构的Dagger使用，
+
+A:
+Present1和2都是一个简单的注入例子
+A1:
+Present1通过TestDaggerActivityModule里面的 @Provides注解的标识的方法来标识为供应端
+Present2直接在构造方法上用 @Inject注解来标识自己为供应端
+A2:
+TestDaggerActivityComponent为桥梁，其实就是把需要解析的类的实例传过来，然后dagger会解析这个类中
+哪几个属性要被注入
+（假设我还没写Present3）
+    @Inject
+    TestDaggerPresent1 present1;
+    @Inject
+    TestDaggerPresent2 present2;
+上面这两个需要被注入
+A3:使用
+       编译项目以后可以直接使用了在Activity的onCreate方法中注入
+        DaggerTestDaggerActivityComponent.builder()
+              .build()
+              .inject(this);//TestDaggerActivityComponent定义的方法
+B：
+present3是一个典型的MVP例子，Present中还拥有视图层的引用
+B1:
+先定义试图层接口ITestDaggerView，然后让TestDaggerActivity实现这个接口
+B2:
+TestDaggerPresent3的构造方法中要求传入ITestDaggerView的实例
+B3:
+建立TestDagger3ActivityModule，并加入到TestDaggerActivityComponent的注解中
+@Component(module={...})
+B4:
+编译项目以后可以直接使用了在Activity的onCreate方法中注入
+     //注入实例
+        DaggerTestDaggerActivityComponent.builder()
+                //就是这里了
+                .testDagger3ActivityModule(new TestDagger3ActivityModule(this))
+                //
+                .build()
+                .inject(this);
+B5:
+在学的过程中有一种方法是 通过Component传入，但是我怎么实验都报错。。
+

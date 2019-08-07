@@ -1,0 +1,31 @@
+这个是测试我给Present3通过dagger注入
+有2个module，Present3Module和Present3ModuleWithParam
+第一个不带参，第二个带参数一个String类型
+
+ 其实通过例子可以发现，一般来说module中的方法实要返回某一个对象，不然貌似就没什么价值
+ 所以2个module就通过2个方法分别返回ListOfData和MyName
+
+ Present3Component 指明了这个2个module
+  void inject(TestDaggerPresent3 testDaggerPresent3);也标识了要处理的类实例
+
+  大概写好以后 make project
+  然后去present3中是这样用的
+
+     public void printView() {
+          Log.d(TestDaggerActivity.TAG,   "iview="+iview);
+          //之所以是DaggerPresent3Component这个名字
+          //是因为Component的名字是Present3Component，就是在前面加Dagger
+          DaggerPresent3Component.builder()
+          //这个是那个有参数的module，所以要调用这样写一下别问为什么，就是这样
+                  .present3ModuleWithParam(new Present3ModuleWithParam("WO SHI SHEI ??"))
+                  .build().inject(this);
+          listOfData.forEach();
+          Log.d(TestDaggerActivity.TAG,"myname="+myname.myName());
+
+      }
+
+      @Inject
+      ListOfData listOfData;
+
+      @Inject
+      MyName myname;
