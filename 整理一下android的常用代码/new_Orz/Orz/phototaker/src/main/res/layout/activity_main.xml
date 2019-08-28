@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/pick_photo_btn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#4169E1"
+        android:text="Pick photos"
+        android:textColor="#ffffff" />
+
+    <TextView
+        android:id="@+id/pick_photo_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#484f"
+        android:gravity="center"
+        android:hint="@string/app_name"
+        android:minHeight="50dp" />
+
+    <ImageView
+        android:id="@+id/pick_photo_img"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#4f43"
+        android:scaleType="centerInside"
+        android:gravity="center"
+        android:hint="@string/app_name"
+        android:minHeight="50dp" />
+</LinearLayout>

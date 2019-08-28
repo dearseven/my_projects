@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.teetaa.phototaker">
+
+    <application>
+        <activity android:name=".main.v.SelectPhotoActivity"
+            android:theme="@style/TranslucentFullScreenThemePT"></activity>
+    </application>
+
+</manifest>
