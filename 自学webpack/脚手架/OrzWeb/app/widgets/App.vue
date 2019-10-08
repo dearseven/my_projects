@@ -39,6 +39,21 @@
 			//因为键盘弹出会引起百分比布局的比例失调,所以用px换算
 			let bodyBaseHeight = (document.documentElement.clientHeight || document.body.clientHeight);
 			document.getElementById("main_footer_").style.height = (bodyBaseHeight * 0.09) + "px";
+			//默认路由是'/'，我这里跳转到'/me'
+			window.setTimeout(() => {
+				this.jumpToLogin()
+			}, 500);
+		},
+		created: function() {
+			window._jumpToLogin = this.jumpToLogin
+		},
+		destroyed: function() {
+			window._jumpToLogin = undefined;
+		},
+		methods: {
+			jumpToLogin:function(){
+			  this.$router.push('/me');
+			}
 		}
 	}
 </script>
