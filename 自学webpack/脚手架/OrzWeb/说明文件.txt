@@ -24,6 +24,9 @@ found N（一个数字） vulnerabilities run `npm audit fix` to fix them
 修复方法是删除build、node_modules文件夹，然后
 npm audit fix
 然后再重新安装
+----其实最好的方式是修复更新NPM的版本啊 
+npm install -g npm
+
 
 3 webpack.config.js中的css-loader的localIdentName采用的是 '[local]' 
  而不是,指定css的类名格式[name]-[local],所以vue组件中的类名选择器不会添加组件名
