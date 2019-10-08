@@ -1,4 +1,8 @@
-﻿通过launcher.html进入
+﻿因为在package.json 配置了start是运行webpack所以 只要npm start就可以了
+但是不知道为什么npm server不行
+然后把，就是我都不是全局安装的，所以更要配置start命令
+
+通过launcher.html进入
 
 1 vue(没有vue-cli,用了vue-router)+webpack+mint-ui
 
@@ -14,6 +18,12 @@ npm install --save-dev html-webpack-plugin
 npm install --save-dev  vue-router
 
 npm i mint-ui -S
+
+如果是copy我这个项目出来用的 会发现一个错误是
+found N（一个数字） vulnerabilities run `npm audit fix` to fix them
+修复方法是删除build、node_modules文件夹，然后
+npm audit fix
+然后再重新安装
 
 3 webpack.config.js中的css-loader的localIdentName采用的是 '[local]' 
  而不是,指定css的类名格式[name]-[local],所以vue组件中的类名选择器不会添加组件名
