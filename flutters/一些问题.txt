@@ -1,0 +1,54 @@
+问题：可能会一直停留在Resolving dependencies…过不去。
+进入Project的build.gradle
+
+
+buildscript {
+    repositories {
+//        google()
+//        jcenter()
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
+    }
+ 
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.4.2'
+    }
+}
+ 
+allprojects {
+    repositories {
+//        google()
+//        jcenter()
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
+    }
+
+这时候你以为修改完了吗？ 没有还需要修改Flutter 下边的 gradle文件，
+打开Flutter sdk目录(我的在C:\sdk\flutter_windows_v1.2.1-stable)，找到如下地址：
+ flutter>packages>flutter_tools>gradle
+打开 flutter.gradle 文件
+
+buildscript {
+    repositories {
+        //注视掉原有的，采用镜像地址下载
+        // google()
+        // jcenter()
+        maven { 
+            url 'https://maven.aliyun.com/repository/google' 
+		}
+        maven{
+            url 'https://maven.aliyun.com/repository/jcenter'
+        }
+        maven{
+            url 'http://maven.aliyun.com/nexus/content/groups/public'
+        }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.2.1'
+    }
+}
+ 
+
+
