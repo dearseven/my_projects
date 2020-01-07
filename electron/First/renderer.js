@@ -13,5 +13,5 @@ console.log(window.location.href)
 
 
 window.setTimeout(()=>{
-    window.location.href='pages/path1.html'
-},2000)
+    window.location.href='pages/SimpleFileDownload1.html'
+},5000)
