@@ -11,7 +11,9 @@ console.log(window.location.href)
 // win.loadURL('https://www.baidu.com')
 
 
-
-window.setTimeout(()=>{
-    window.location.href='pages/SimpleFileDownload1.html'
-},5000)
+document.getElementById('goFileDown').onclick = () => {
+	window.location.href = 'pages/SimpleFileDownload1.html'
+}
+// window.setTimeout(() => {
+// 	window.location.href = 'pages/SimpleFileDownload1.html'
+// }, 5000)
