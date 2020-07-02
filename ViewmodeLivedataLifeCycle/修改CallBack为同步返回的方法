@@ -1,0 +1,50 @@
+    private fun startNetWork() {
+        launch {
+            withContext(Dispatchers.IO) {
+                //这里调用网络查询的方法
+                val result = requestInfoFromServer()
+                withContext(Dispatchers.Main) {
+                    if (result.returnCode == SimpleHttp.Result.CODE_SUCCESS) {
+                        val cson = CSON(result.retString)
+                        val retCode = cson.getInt("code")
+                        if (retCode == 0) {
+                            val dataModel = getDataModel()
+                            dataModel.productList.postValue(cson.getSpecificType("productList", JSONArray::class.java))
+                        }
+                    }
+                }
+                //--- withContext(Dispatchers.Main)
+            }
+            //--- withContext(Dispatchers.IO)
+        }
+        //--- launch
+    }
+
+    private suspend fun requestInfoFromServer(): SimpleHttp.Result {
+        //注意用suspendCancellableCoroutine返回
+        return suspendCancellableCoroutine { scc ->
+            HttpHelper.getRequest(productListUrl, object : IDoSomeThing<HttpResponse>() {
+                override fun doSomeThing(t: HttpResponse?) {
+                    //scc的resume()方法，就是让结果通过方法的结果返回而不是callback
+                    //这里resume里的参数是SimpleHttp.Result类型
+                    //所以整个方法返回的也是SimpleHttp.Result类型
+                    scc.resume(t?.let { t ->
+                        val r = SimpleHttp.Result()
+                        r.retString = t.responseString
+                        r.errorMsg = ""
+                        r.returnCode = SimpleHttp.Result.CODE_SUCCESS
+                        r
+                    } ?: SimpleHttp.Result().also {
+                        it.makeExResult()
+                    })
+                }
+            }, object : IDoSomeThing<HttpFailure>() {
+                override fun doSomeThing(t: HttpFailure?) {
+                    //这里错误的结果也用scc.resume返回
+                    scc.resume(SimpleHttp.Result().also {
+                        it.makeExResult()
+                    })
+                }
+            }, null)
+        }
+    }
