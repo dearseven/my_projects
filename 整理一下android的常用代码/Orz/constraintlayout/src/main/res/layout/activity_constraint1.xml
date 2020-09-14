@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,16 +7,17 @@
     tools:context=".constraint1">
 
     <!--顶部banner -->
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/c1_banner"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#765"
         app:layout_constraintDimensionRatio="H,16:9"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
+        app:layout_constraintRight_toRightOf="parent"
+        tools:ignore="MissingConstraints">
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     <!--中间一个相对复杂的布局 -->
@@ -58,7 +59,7 @@
         app:layout_constraintTop_toBottomOf="@+id/c1_tv1" />
 
     <!--布局2个按钮 没什么就是试试-->
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:background="#efefdd"
@@ -77,7 +78,7 @@
             app:layout_constraintLeft_toRightOf="@id/c1_btn1"
             app:layout_constraintRight_toRightOf="parent" />
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
     <!-- 底部3个按钮-->
     <TextView
         android:id="@+id/c1_tab1"
@@ -137,7 +138,7 @@
         app:layout_constraintVertical_bias="0.9" />
     <!--用辅助线创建浮动按钮-->
     <!-- horizontal 横向的辅助线,用来设定高度-->
-    <android.support.constraint.Guideline
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_h"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -145,7 +146,7 @@
         app:layout_constraintGuide_percent="0.8125" />
 
     <!-- vertical 竖向的辅助线,用来设定宽度-->
-    <android.support.constraint.Guideline
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_w"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -163,4 +164,4 @@
         app:layout_constraintTop_toBottomOf="@id/guideline_h" />
 
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -55,7 +55,7 @@
 
         <!-- 注意authorities的包名~~~!!!-->
         <provider
-            android:name="android.support.v4.content.FileProvider"
+            android:name="androidx.core.content.FileProvider"
             android:authorities="chat.sh.orz.cyan.orz.file.provider"
             android:exported="false"
             android:grantUriPermissions="true">

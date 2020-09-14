@@ -1,1 +1,2 @@
 include ':app', ':phototaker', ':recyclerlist', ':appinstall', ':runbackrun', ':constraintlayout', ':drawsome', ':m_permission', ':wheel', ':mvvm', ':junit', ':rx_java2'
+include ':mycoroutines'

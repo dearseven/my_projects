@@ -1,6 +1,6 @@
 package chat.sh.orz.cyan.drawsome
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
 class DrawSomeActivity : AppCompatActivity() {

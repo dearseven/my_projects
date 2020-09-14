@@ -8,8 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class TryEasyPickerView extends AppCompatActivity {
 

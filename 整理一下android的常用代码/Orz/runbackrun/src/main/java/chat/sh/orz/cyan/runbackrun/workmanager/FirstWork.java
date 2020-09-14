@@ -1,6 +1,6 @@
 package chat.sh.orz.cyan.runbackrun.workmanager;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.util.Log;
 
 import androidx.work.Worker;
@@ -12,6 +12,7 @@ public class FirstWork extends Worker {
     @NonNull
     @Override
     public Result doWork() {
+
         String str = this.getInputData().getString("demo");
         Log.i(TAG, "FirstWork执行了哦:" + str);
         return Result.SUCCESS;

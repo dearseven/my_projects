@@ -3,21 +3,21 @@ package chat.sh.orz.cyan.appinstall
 import android.app.Activity
 import android.content.Context
 import android.os.Bundle
-import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity
+import com.google.android.material.snackbar.Snackbar
+import androidx.appcompat.app.AppCompatActivity
 
 import kotlinx.android.synthetic.main.activity_install_main.*
 import java.io.File
 import java.nio.file.Files.exists
 import android.content.DialogInterface
 import android.os.Build
-import android.support.v7.app.AlertDialog
+import androidx.appcompat.app.AlertDialog
 import android.content.Intent
 import android.net.Uri
 import android.provider.Settings
 import android.provider.Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES
-import android.support.annotation.RequiresApi
-import android.support.v4.content.FileProvider
+import androidx.annotation.RequiresApi
+import androidx.core.content.FileProvider
 import android.content.res.AssetManager
 import java.io.FileOutputStream
 import java.io.IOException

@@ -7,10 +7,10 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
-import android.support.annotation.RequiresApi
+import androidx.annotation.RequiresApi
 import android.widget.Toast
 
 class MPermissionActivity : AppCompatActivity() {

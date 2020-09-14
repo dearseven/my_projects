@@ -3,7 +3,7 @@ package chat.sh.orz.cyan.phototaker
 import android.Manifest
 import android.app.Activity
 import android.content.Context
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
 import com.zhihu.matisse.engine.impl.GlideEngine
@@ -17,7 +17,7 @@ import android.net.Uri
 import android.os.Build
 import chat.sh.orz.cyan.phototaker.utils.Glide4Engine
 import android.provider.MediaStore
-import android.support.annotation.RequiresApi
+import androidx.annotation.RequiresApi
 import android.util.Log
 
 

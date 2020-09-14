@@ -1,8 +1,7 @@
 package chat.sh.orz.cyan.recyclerlist;
 
-import android.graphics.Paint;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.View;
 import android.view.ViewGroup;
 

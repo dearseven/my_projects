@@ -4,8 +4,8 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
-import android.text.TextUtils;
+import androidx.annotation.RequiresApi;
+
 import android.util.AttributeSet;
 import android.webkit.*;
 

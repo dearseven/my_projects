@@ -1,6 +1,6 @@
 package chat.sh.orz.cyan.orz.main
 
-import android.databinding.ObservableField
+import androidx.databinding.ObservableField
 
 class FunctionViewModel() {
     constructor(_name: String, _c: Class<*>) : this() {

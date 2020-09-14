@@ -1,8 +1,8 @@
 package chat.sh.orz.cyan.mvvm.view
 
-import android.databinding.BaseObservable
-import android.databinding.ObservableField
-import android.databinding.ObservableInt
+import androidx.databinding.BaseObservable
+import androidx.databinding.ObservableField
+import androidx.databinding.ObservableInt
 
 class ViewObj : BaseObservable() {
     //private val userRepository = UserRepository()

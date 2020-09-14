@@ -1,14 +1,12 @@
 package chat.sh.orz.cyan.orz.main;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.res.Resources;
 import android.graphics.Rect;
-import android.support.v7.app.AlertDialog;
+import androidx.appcompat.app.AlertDialog;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Window;
-import android.widget.Toast;
 
 /**
  * 手机的尺寸信息

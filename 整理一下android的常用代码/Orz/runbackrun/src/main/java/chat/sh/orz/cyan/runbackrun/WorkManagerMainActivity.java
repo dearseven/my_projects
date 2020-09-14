@@ -1,7 +1,7 @@
 package chat.sh.orz.cyan.runbackrun;
 
 import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import java.util.concurrent.TimeUnit;
@@ -9,7 +9,6 @@ import java.util.concurrent.TimeUnit;
 import androidx.work.Constraints;
 import androidx.work.Data;
 import androidx.work.NetworkType;
-import androidx.work.OneTimeWorkRequest;
 import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
 import chat.sh.orz.cyan.runbackrun.workmanager.FirstWork;

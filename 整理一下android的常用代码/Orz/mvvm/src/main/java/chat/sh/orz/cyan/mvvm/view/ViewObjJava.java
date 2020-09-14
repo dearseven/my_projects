@@ -1,9 +1,9 @@
 package chat.sh.orz.cyan.mvvm.view;
 
-import android.databinding.BaseObservable;
-import android.databinding.Bindable;
-import android.databinding.Observable;
-import android.databinding.ObservableField;
+import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
+import androidx.databinding.Observable;
+import androidx.databinding.ObservableField;
 
 import chat.sh.orz.cyan.mvvm.BR;
 

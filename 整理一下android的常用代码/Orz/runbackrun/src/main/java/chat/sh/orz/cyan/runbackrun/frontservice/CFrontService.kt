@@ -9,8 +9,8 @@ import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.*
 import chat.sh.orz.cyan.runbackrun.FrontServiceActivity
-import android.support.v4.app.BundleCompat.getBinder
-import android.support.v4.app.NotificationCompat
+import androidx.core.app.BundleCompat.getBinder
+import androidx.core.app.NotificationCompat
 import android.util.Log
 import chat.sh.orz.cyan.runbackrun.R
 

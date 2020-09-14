@@ -1,7 +1,7 @@
 package chat.sh.orz.cyan.orz.main
 
-import android.databinding.DataBindingUtil
-import android.support.v7.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
@@ -12,8 +12,8 @@ import chat.sh.orz.cyan.orz.databinding.FunRecyclerItemLayoutBinding
 import chat.sh.orz.cyan.phototaker.MainActivity
 import kotlinx.android.synthetic.main.activity_function.*
 import chat.sh.orz.cyan.recyclerlist.MyItemDecoration
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.helper.ItemTouchHelper
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.ItemTouchHelper
 import chat.sh.orz.cyan.recyclerlist.MyRecyclerView.MyRecyclerViewListener
 import chat.sh.orz.cyan.recyclerlist.adapter.CItemView
 import chat.sh.orz.cyan.recyclerlist.adapter.CRecyclerListAdapter
@@ -74,7 +74,7 @@ class FunctionActivity : AppCompatActivity() {
         //这个没用了 因为我没有用sdk提供的swipe和拖拽
         touchHelper.attachToRecyclerView(funRv);
         //***2***基本设置
-        funRv.layoutManager = LinearLayoutManager(this)
+        funRv.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
         funRv.addItemDecoration(MyItemDecoration())
         //---这个adapter就有意思
         // 实际上是上是装饰器模式,MyRecyclerView重写了原本的setAdapter
