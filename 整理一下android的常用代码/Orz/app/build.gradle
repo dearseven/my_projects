@@ -11,7 +11,7 @@ android {
     }
     defaultConfig {
         applicationId "chat.sh.orz.cyan.orz"
-        minSdkVersion 14
+        minSdkVersion 16
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -38,6 +38,10 @@ android {
         pickFirst 'META-INF/proguard/androidx-annotations.pro'
 
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 kapt {
     generateStubs = true
@@ -53,6 +57,7 @@ dependencies {
     implementation 'androidx.vectordrawable:vectordrawable:1.0.0'
     //testImplementation 'junit:junit:4.12'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation project(path: ':flutter')
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
     //
@@ -82,5 +87,6 @@ dependencies {
     implementation project(":wheel")
     implementation project(":mvvm")
     implementation project(":rx_java2")
+    implementation project(":flutter")
 
 }

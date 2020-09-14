@@ -24,6 +24,7 @@
             <option value="$PROJECT_DIR$/runbackrun" />
             <option value="$PROJECT_DIR$/rx_java2" />
             <option value="$PROJECT_DIR$/wheel" />
+            <option value="$PROJECT_DIR$/../orz_flutter_module/.android/Flutter" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

@@ -28,6 +28,7 @@ import chat.sh.orz.cyan.constraintlayout.constraint1
 import chat.sh.orz.cyan.drawsome.DrawSomeActivity
 import chat.sh.orz.cyan.m_permission.MPermissionActivity
 import chat.sh.orz.cyan.mvvm.model.MVVMActivity
+import chat.sh.orz.cyan.orz.goflutter.GoFlutterActivity
 import chat.sh.orz.cyan.runbackrun.FrontServiceActivity
 import chat.sh.orz.cyan.runbackrun.RunbackMainActivity
 import chat.sh.orz.cyan.runbackrun.WorkManagerMainActivity
@@ -61,6 +62,7 @@ class FunctionActivity : AppCompatActivity() {
         funcList.add(FunctionViewModel("滚轮", WheelMainActivity::class.java))
         funcList.add(FunctionViewModel("MVVM", MVVMActivity::class.java))
         funcList.add(FunctionViewModel("rx_java2",RxJavaActivity::class.java))
+        funcList.add(FunctionViewModel("goFlutter",GoFlutterActivity::class.java))
 
         //初始化adapter
         adapter = Adapter()

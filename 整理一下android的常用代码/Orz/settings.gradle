@@ -1,2 +1,12 @@
 include ':app', ':phototaker', ':recyclerlist', ':appinstall', ':runbackrun', ':constraintlayout', ':drawsome', ':m_permission', ':wheel', ':mvvm', ':junit', ':rx_java2'
+
 include ':mycoroutines'
+
+
+setBinding(new Binding([gradle: this]))
+evaluate(new File(
+        settingsDir,
+        '../orz_flutter_module/.android/include_flutter.groovy'
+))
+//include ':orz_flutter_module'
+//project(':orz_flutter_module').projectDir = new File('../orz_flutter_module')
