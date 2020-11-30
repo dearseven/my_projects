@@ -2,9 +2,8 @@ package chat.sh.orz.cyan.recyclerlist;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.RecyclerView;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -15,9 +14,15 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+
 import java.util.ArrayList;
 
 /**
+ *
  */
 public class MyRecyclerView extends RecyclerView {
 
@@ -39,6 +44,7 @@ public class MyRecyclerView extends RecyclerView {
         return myRecyclerViewListener;
     }
 
+    private int topOrBtm = 0;//-1 顶部 1 底部 0都不是
 
     public void setMyRecyclerViewListener(MyRecyclerViewListener myRecyclerViewListener) {
         this.myRecyclerViewListener = myRecyclerViewListener;
@@ -71,9 +77,13 @@ public class MyRecyclerView extends RecyclerView {
                 break;
             case MotionEvent.ACTION_MOVE:
                 //判断是否滑动到了头部
-                if (!canScrollVertically(-1)) {
+                boolean f = !canScrollVertically(-1);
+                Log.i("canScrollVertically", "!canScrollVertically(-1)=" + f);
+                if (!canScrollVertically(-1) || topOrBtm == -1) {
                     int dy = lastY - y;
                     int dx = lastX - x;
+
+                    Log.i("canScrollVertically", Math.abs(dy) + " " + Math.abs(dx));
 
                     if (Math.abs(dy) > Math.abs(dx)) {
                         isRefresh = true;
@@ -100,6 +110,10 @@ public class MyRecyclerView extends RecyclerView {
     }
 
     private void changeHeight(int dy) {
+        Log.i("canScrollVertically", "headerView.getLayoutParams().height=" + headerViewHeight);
+        if (headerView.getLayoutParams().height > headerViewHeight * 2) {
+            return;
+        }
         //   1 这里用高度来撑开margin还是挺好用的,比直接修改marginTop效果好
         headerView.getLayoutParams().height -= dy;
         //
@@ -155,6 +169,24 @@ public class MyRecyclerView extends RecyclerView {
                 if (mState != STATE_NORMAL) {
                     return;
                 }
+
+                LinearLayoutManager layoutManager1 = (LinearLayoutManager) recyclerView.getLayoutManager();
+                int firstCompletelyVisibleItemPosition = layoutManager1.findFirstCompletelyVisibleItemPosition();
+                Log.i("canScrollVertically", "firstCompletelyVisibleItemPosition: " + firstCompletelyVisibleItemPosition);
+                topOrBtm = 0;
+                if (firstCompletelyVisibleItemPosition == 0) {
+                    Log.i("canScrollVertically", "滑动到顶部");
+                    topOrBtm = -1;
+                }
+
+                int lastCompletelyVisibleItemPosition = layoutManager1.findLastCompletelyVisibleItemPosition();
+                Log.i("canScrollVertically", "lastCompletelyVisibleItemPosition: " + lastCompletelyVisibleItemPosition);
+                if (lastCompletelyVisibleItemPosition == layoutManager1.getItemCount() - 1) {
+                    Log.i("canScrollVertically", "滑动到底部");
+                    topOrBtm = 1;
+                }
+
+
                 //判断是否最后一item个显示出来
                 LayoutManager layoutManager = getLayoutManager();
 
