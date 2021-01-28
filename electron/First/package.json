@@ -9,7 +9,7 @@
   "author": "Cyan",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^7.1.4",
+    "electron": "^9.4.0",
     "fs-extra": "^8.1.0",
     "lowdb": "^1.0.0",
     "request": "^2.88.0"
